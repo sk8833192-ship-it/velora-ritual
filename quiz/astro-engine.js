@@ -162,6 +162,8 @@
       moonGlyph: GLYPHS[moonSign],
       risingGlyph: rising ? GLYPHS[rising] : null,
       sunDeg: sunDeg,
+      sunLon: sunLon,
+      moonLon: moonLon,
       aspectLabel: `Sun ${aspectName} Moon · orb ${orb}°`,
       dominantElement: dominantElement,
       missingElement: missingElement,
