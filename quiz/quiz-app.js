@@ -824,7 +824,21 @@
         sp.set("sign", chart.sun);
         sp.set("moon", chart.moon);
         sp.set("need", sku.keyword);
-        const pageName = location.hostname.endsWith("github.io") ? "../index.html?" : "../storefront-preview.html?";
+        const curParams = new URLSearchParams(location.search);
+        const isLiveGhPages = location.hostname.endsWith("github.io") && CFG.SHOPIFY_DOMAIN === "https://veloraritual.com";
+        const isFlagshipMode = curParams.get("mode") === "flagship" || (document.referrer && document.referrer.indexOf("/flagship/") !== -1);
+        let pageName;
+        if (isLiveGhPages) {
+          const fileSlug = sku.handle === "twilight-amethyst-bracelet" ? "index.html" : (sku.handle + ".html");
+          pageName = "../" + fileSlug + "?";
+        } else if (isFlagshipMode) {
+          const fileSlug = sku.handle === "twilight-amethyst-bracelet" ? "index.html" : (sku.handle + ".html");
+          pageName = "../flagship/" + fileSlug + "?";
+        } else {
+          pageName = window.VELORA_SACRED_V2
+            ? "../storefront-sacred-v2.html?"
+            : "../storefront-preview.html?";
+        }
         const target = pageName + sp.toString();
         if (window.top && window.top !== window) window.top.location.href = target;
         else window.location.href = target;

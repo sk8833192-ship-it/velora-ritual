@@ -3,40 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <title>VELORA · Find Your Birth-Chart Crystal in 60 Seconds</title>
-  <meta name="description" content="Discover the natural gemstone and passive NFC ritual piece matched to your Sun, Moon, and current chapter in 60 seconds.">
-  <meta property="og:title" content="VELORA · 60-Second Birth-Chart Crystal Match">
-  <meta property="og:description" content="Vela reads your natal placements to find the natural stone your energy needs right now.">
-  <meta property="og:image" content="./assets/hero_nfc_tap.jpg">
+  <title>VELORA · Sacred Natal Talisman Alignment</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles-sacred-v2.css">
   <script src="./config.js"></script>
   <script>
-    // Auto-bootstrap Meta Pixel & GA4 when configured in config.js
-    (function(){
-      var c = window.VELORA_CONFIG || {};
-      if (c.META_PIXEL_ID) {
-        !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-        n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-        n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-        t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-        document,'script','https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', c.META_PIXEL_ID);
-        fbq('track', 'PageView');
-      }
-      if (c.GA4_MEASUREMENT_ID) {
-        var s = document.createElement('script');
-        s.async = true;
-        s.src = 'https://www.googletagmanager.com/gtag/js?id=' + c.GA4_MEASUREMENT_ID;
-        document.head.appendChild(s);
-        window.dataLayer = window.dataLayer || [];
-        window.gtag = function(){dataLayer.push(arguments);};
-        gtag('js', new Date());
-        gtag('config', c.GA4_MEASUREMENT_ID);
-      }
-    })();
+    // Route V2 Sacred Quiz results directly back to V2 Sacred Sanctuary Storefront
+    window.VELORA_SACRED_V2 = true;
   </script>
 </head>
 <body>
