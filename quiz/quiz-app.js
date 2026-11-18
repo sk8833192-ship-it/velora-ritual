@@ -829,10 +829,10 @@
         const isFlagshipMode = curParams.get("mode") === "flagship" || (document.referrer && document.referrer.indexOf("/flagship/") !== -1);
         let pageName;
         if (isLiveGhPages) {
-          const fileSlug = sku.handle === "twilight-amethyst-bracelet" ? "index.html" : (sku.handle + ".html");
+          const fileSlug = sku.handle + ".html";
           pageName = "../" + fileSlug + "?";
         } else if (isFlagshipMode) {
-          const fileSlug = sku.handle === "twilight-amethyst-bracelet" ? "index.html" : (sku.handle + ".html");
+          const fileSlug = sku.handle + ".html";
           pageName = "../flagship/" + fileSlug + "?";
         } else {
           pageName = window.VELORA_SACRED_V2
