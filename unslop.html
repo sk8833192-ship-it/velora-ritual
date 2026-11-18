@@ -1,13 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <!--
-  Interface and visual pass built following unslop by Damir Sokolovsky (@heydamir), CC BY 4.0 (https://github.com/heydamir/unslop)
-  Direction:
-  - Product: A half-chain Uruguayan amethyst and 18k gold PVD bracelet whose clasp disc opens a daily birth-chart reading in Safari with no app or subscription
-  - Character: quiet, tactile, grounded
-  - World: unbleached cotton paper, raw limestone, overcast morning window light, jeweler's bench (#f7f4ee warm ramp)
-  - Moments: (1) natural window-light studio photos of the bracelet on linen and paper; (2) live coded Safari reading sheet computed from the visitor's real birth date
-  - Signature: astronomical degree and arcminute coordinates in tabular monospace (22° 18′)
+  Image-led editorial edition built following unslop by Damir Sokolovsky (@heydamir), CC BY 4.0 (https://github.com/heydamir/unslop)
+  9 unique overcast-daylight photographs on #f7f4ee warm cotton-paper palette, minimal 1-line captions, live coded Safari sheet
 -->
 <head>
 <meta charset="UTF-8">
@@ -27,7 +22,6 @@
     --text-2: #5e554a;
     --muted: #6d6459;
     --accent: #584269;
-    --positive: #16a34a;
     --sans: 'Instrument Sans', -apple-system, BlinkMacSystemFont, sans-serif;
     --serif: 'Newsreader', Georgia, serif;
     --mono: 'JetBrains Mono', monospace;
@@ -50,20 +44,20 @@
   button, input { font-family: inherit; font-variant-numeric: tabular-nums; }
   button { cursor: pointer; }
 
-  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+  .wrap { max-width: 1320px; margin: 0 auto; padding: 0 32px; }
 
-  /* Header: 60px, quiet chrome */
+  /* Quiet 56px Header */
   .site-header {
     position: sticky;
     top: 0;
     z-index: 40;
-    height: 60px;
+    height: 56px;
     background: rgba(247, 244, 238, 0.92);
     backdrop-filter: blur(8px);
     border-bottom: 1px solid var(--line);
   }
   .header-inner {
-    max-width: 1200px;
+    max-width: 1320px;
     height: 100%;
     margin: 0 auto;
     padding: 0 32px;
@@ -73,11 +67,9 @@
     gap: 24px;
   }
   .wordmark {
-    font-family: var(--sans);
     font-size: 17px;
     font-weight: 600;
     line-height: 1;
-    color: var(--text);
     letter-spacing: -0.01em;
   }
   .nav-links {
@@ -87,15 +79,9 @@
     font-size: 14px;
     color: var(--text-2);
   }
-  .nav-links a {
-    transition: color 150ms var(--ease);
-  }
+  .nav-links a { transition: color 150ms var(--ease); }
   .nav-links a:hover { color: var(--text); }
-  .header-right {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
+  .header-right { display: flex; align-items: center; gap: 16px; }
   .text-link {
     font-size: 14px;
     color: var(--text-2);
@@ -117,12 +103,20 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    transition: background-color 150ms var(--ease), border-color 150ms var(--ease), transform 120ms var(--ease);
+    transition: background-color 150ms var(--ease), transform 120ms var(--ease);
   }
   .bag-btn:hover { background: var(--raised); }
   .bag-btn:active { transform: scale(0.98); }
 
-  /* Buttons: 44px height, 8px radius, solid primary ink */
+  .ico {
+    width: 16px;
+    height: 16px;
+    stroke: currentColor;
+    stroke-width: 1.5;
+    fill: none;
+    flex: none;
+  }
+
   .btn-primary {
     height: 44px;
     padding: 0 20px;
@@ -142,189 +136,211 @@
   .btn-primary:active { transform: scale(0.98); }
 
   .btn-secondary {
-    height: 44px;
-    padding: 0 18px;
+    height: 40px;
+    padding: 0 14px;
     border-radius: 8px;
     border: 1px solid var(--line-strong);
     background: var(--raised);
     color: var(--text);
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 500;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
-    transition: background-color 150ms var(--ease), border-color 150ms var(--ease), transform 120ms var(--ease);
+    transition: border-color 150ms var(--ease), transform 120ms var(--ease);
   }
-  .btn-secondary:hover { border-color: rgba(31, 27, 22, 0.28); }
+  .btn-secondary:hover { border-color: rgba(31, 27, 22, 0.3); }
   .btn-secondary:active { transform: scale(0.98); }
 
-  .ico {
-    width: 16px;
-    height: 16px;
-    stroke: currentColor;
-    stroke-width: 1.5;
-    fill: none;
-    flex: none;
-  }
-
-  /* Hero: Asymmetric split, calm space, one bright physical object */
-  .hero {
-    padding: 48px 0 80px;
+  /* ================= BAND 1: IMAGE-LED 2x2 LOOKBOOK HERO + STICKY RAIL ================= */
+  .hero-layout {
+    padding: 28px 0 72px;
     display: grid;
-    grid-template-columns: 7fr 5fr;
-    gap: 48px;
-    align-items: center;
+    grid-template-columns: 1.85fr 1fr;
+    gap: 40px;
+    align-items: start;
   }
-  .hero-stage {
-    border-radius: 16px;
+  .lookbook-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .photo-frame {
+    border-radius: 12px;
     overflow: hidden;
     background: var(--raised);
     border: 1px solid var(--line);
-    aspect-ratio: 3 / 2;
     cursor: zoom-in;
   }
-  .hero-stage img {
+  .photo-frame.wide { grid-column: span 2; aspect-ratio: 16 / 10; }
+  .photo-frame.sq { aspect-ratio: 1 / 1; }
+  .photo-frame img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
+    transition: opacity 180ms var(--ease);
   }
-  .hero-thumbs {
-    margin-top: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-  }
-  .thumb-row {
-    display: flex;
-    gap: 8px;
-  }
-  .thumb {
-    width: 72px;
-    height: 48px;
-    border-radius: 8px;
-    overflow: hidden;
-    border: 1px solid var(--line);
-    background: var(--raised);
-    opacity: 0.64;
-    padding: 0;
-    transition: opacity 150ms var(--ease), border-color 150ms var(--ease);
-  }
-  .thumb.active, .thumb:hover {
-    opacity: 1;
-    border-color: var(--text);
-  }
-  .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .caption-note {
-    font-size: 13px;
-    line-height: 20px;
-    color: var(--muted);
-  }
+  .photo-frame:hover img { opacity: 0.94; }
 
-  .hero-meta {
+  .sticky-rail {
+    position: sticky;
+    top: 80px;
+    padding: 24px;
+    border-radius: 16px;
+    background: var(--card);
+    border: 1px solid var(--line);
+  }
+  .rail-meta {
     font-family: var(--mono);
     font-size: 12px;
     line-height: 16px;
     color: var(--muted);
-    margin-bottom: 12px;
-  }
-  .hero-title {
-    font-family: var(--serif);
-    font-size: 48px;
-    font-weight: 400;
-    line-height: 1.06;
-    letter-spacing: -0.02em;
-    color: var(--text);
-    margin-bottom: 16px;
-  }
-  .hero-sub {
-    font-size: 17px;
-    line-height: 28px;
-    color: var(--text-2);
-    max-width: 34rem;
-    margin-bottom: 28px;
-  }
-  .hero-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    align-items: center;
-  }
-
-  /* Sections: 80px rhythm */
-  .section {
-    padding: 80px 0;
-    border-top: 1px solid var(--line);
-    scroll-margin-top: 64px;
-  }
-  .section-title {
-    font-family: var(--serif);
-    font-size: 34px;
-    font-weight: 400;
-    line-height: 1.15;
-    letter-spacing: -0.015em;
-    color: var(--text);
-    margin-bottom: 12px;
-  }
-  .section-lead {
-    font-size: 16px;
-    line-height: 26px;
-    color: var(--text-2);
-    max-width: 36rem;
-  }
-
-  /* Moment 2: Live coded reading preview (5fr / 7fr split) */
-  .reading-split {
-    display: grid;
-    grid-template-columns: 5fr 7fr;
-    gap: 48px;
-    align-items: start;
-  }
-  .date-control {
-    margin-top: 24px;
-    padding: 20px;
-    border-radius: 12px;
-    background: var(--card);
-    border: 1px solid var(--line);
-  }
-  .field-label {
-    display: block;
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--text);
     margin-bottom: 8px;
   }
-  .date-row {
+  .rail-head {
     display: flex;
-    gap: 8px;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 12px;
   }
-  .date-inp {
-    flex: 1;
-    height: 40px;
-    padding: 0 12px;
+  .rail-title {
+    font-family: var(--serif);
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 1.12;
+    letter-spacing: -0.015em;
+  }
+  .rail-price {
+    font-family: var(--mono);
+    font-size: 18px;
+    font-weight: 500;
+  }
+  .rail-copy {
+    font-size: 14px;
+    line-height: 21px;
+    color: var(--text-2);
+    margin-bottom: 20px;
+  }
+
+  .option-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  .opt-row {
+    width: 100%;
+    padding: 12px 14px;
     border-radius: 8px;
     border: 1px solid var(--line-strong);
     background: var(--bg);
-    color: var(--text);
-    font-size: 14px;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    transition: border-color 150ms var(--ease), background-color 150ms var(--ease);
   }
-  .date-inp:focus-visible, .btn-primary:focus-visible, .btn-secondary:focus-visible, .opt-row:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
+  .opt-row.selected {
+    background: var(--card);
+    border-color: var(--accent);
+    box-shadow: inset 0 0 0 1px var(--accent);
+  }
+  .opt-name { font-size: 13.5px; font-weight: 500; color: var(--text); }
+  .opt-sub { font-size: 12px; color: var(--muted); margin-top: 2px; }
+  .opt-price { font-family: var(--mono); font-size: 14px; font-weight: 500; }
+  .opt-was { font-family: var(--mono); font-size: 11.5px; color: var(--muted); text-decoration: line-through; text-align: right; }
+
+  .rail-notes {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 12.5px;
+    color: var(--text-2);
+  }
+  .rail-note-row { display: flex; align-items: center; gap: 8px; }
+
+  /* ================= VISUAL BANDS ================= */
+  .band {
+    padding: 64px 0;
+    border-top: 1px solid var(--line);
+    scroll-margin-top: 60px;
+  }
+  .band-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .band-title {
+    font-family: var(--serif);
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+  }
+  .band-sub {
+    font-size: 14px;
+    color: var(--muted);
   }
 
-  /* Coded Safari Sheet: outer 16px, padding 8px -> inner 8px (nested radius math) */
+  /* Band 2: Large 2-Photo Day-to-Night Diptych */
+  .diptych {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .visual-card figure {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    background: var(--raised);
+    aspect-ratio: 3 / 2;
+    cursor: zoom-in;
+  }
+  .visual-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .visual-cap {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    font-size: 13.5px;
+    line-height: 20px;
+    color: var(--text-2);
+  }
+  .visual-cap strong { font-weight: 500; color: var(--text); }
+  .time-tag { font-family: var(--mono); font-size: 12px; color: var(--muted); flex: none; }
+
+  /* Band 3: 3-Photo Craft, Water & Gift Triptych */
+  .triptych {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .triptych .visual-card figure { aspect-ratio: 1 / 1.05; }
+
+  /* Band 4: Compact Interactive Reading Sheet + Collapsible Specs */
+  .sheet-and-specs {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 40px;
+    align-items: start;
+  }
   .browser-frame {
     border-radius: 16px;
     padding: 8px;
     background: var(--raised);
     border: 1px solid var(--line);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
   }
   .browser-bar {
-    height: 36px;
+    height: 32px;
     padding: 0 12px;
     display: flex;
     align-items: center;
@@ -337,191 +353,65 @@
     border-radius: 8px;
     background: var(--card);
     border: 1px solid var(--line);
-    padding: 28px;
+    padding: 24px;
   }
   .coord-row {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     gap: 12px;
-    padding-bottom: 16px;
+    padding-bottom: 12px;
     border-bottom: 1px solid var(--line);
     font-family: var(--mono);
     font-size: 12px;
     color: var(--muted);
   }
   .coord-accent { color: var(--accent); font-weight: 500; }
-  .sheet-heading {
-    font-family: var(--serif);
-    font-size: 26px;
-    font-weight: 400;
-    line-height: 1.2;
-    margin: 20px 0 12px;
-    color: var(--text);
-  }
-  .sheet-body {
-    font-size: 15px;
-    line-height: 24px;
-    color: var(--text-2);
-    margin-bottom: 20px;
-  }
-  .breath-bar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-    padding: 12px 16px;
-    border-radius: 8px;
-    background: var(--bg);
-    border: 1px solid var(--line);
-    font-size: 13px;
-    color: var(--text-2);
-  }
 
-  /* Materials & Specs: 6fr / 6fr varied content (photo left, hairline spec rows right) */
-  .craft-split {
-    display: grid;
-    grid-template-columns: 6fr 6fr;
-    gap: 48px;
-    align-items: center;
-  }
-  .craft-photo {
-    border-radius: 16px;
-    overflow: hidden;
-    border: 1px solid var(--line);
-    background: var(--raised);
-    aspect-ratio: 3 / 2;
-    cursor: zoom-in;
-  }
-  .craft-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .spec-list {
-    margin-top: 24px;
-    border-top: 1px solid var(--line);
-  }
-  .spec-row {
-    min-height: 44px;
-    padding: 12px 0;
+  .accordion { border-top: 1px solid var(--line); }
+  .accordion details {
     border-bottom: 1px solid var(--line);
-    display: grid;
-    grid-template-columns: 148px 1fr;
-    gap: 16px;
-    align-items: baseline;
-    font-size: 14px;
+    padding: 16px 0;
   }
-  .spec-key { color: var(--muted); }
-  .spec-val { color: var(--text); }
-
-  /* Why it stays on your wrist: asymmetric 4fr / 8fr layout */
-  .notes-split {
-    display: grid;
-    grid-template-columns: 4fr 8fr;
-    gap: 48px;
-    align-items: start;
-  }
-  .notes-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-  }
-  .note-card {
-    padding: 24px;
-    border-radius: 12px;
-    background: var(--card);
-    border: 1px solid var(--line);
-  }
-  .note-card h3 {
-    font-size: 16px;
+  .accordion summary {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14.5px;
     font-weight: 500;
-    line-height: 22px;
-    color: var(--text);
-    margin-bottom: 8px;
+    cursor: pointer;
   }
-  .note-card p {
-    font-size: 14px;
+  .accordion summary::-webkit-details-marker { display: none; }
+  .accordion p {
+    margin-top: 10px;
+    font-size: 13.5px;
     line-height: 21px;
     color: var(--text-2);
-  }
-
-  /* Order section: outer 16px, padding 24px, inner selector group 12px / 8px */
-  .order-grid {
-    display: grid;
-    grid-template-columns: 5fr 7fr;
-    gap: 48px;
-    align-items: start;
-  }
-  .order-panel {
-    padding: 24px;
-    border-radius: 16px;
-    background: var(--card);
-    border: 1px solid var(--line);
-  }
-  .option-group {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin: 20px 0;
-  }
-  .opt-row {
-    width: 100%;
-    padding: 16px;
-    border-radius: 8px;
-    border: 1px solid var(--line-strong);
-    background: var(--bg);
-    text-align: left;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 16px;
-    transition: border-color 150ms var(--ease), background-color 150ms var(--ease);
-  }
-  .opt-row.selected {
-    background: var(--card);
-    border-color: var(--accent);
-    box-shadow: inset 0 0 0 1px var(--accent);
-  }
-  .opt-name { font-size: 14px; font-weight: 500; color: var(--text); }
-  .opt-desc { font-size: 13px; color: var(--muted); margin-top: 2px; }
-  .opt-price { font-family: var(--mono); font-size: 15px; font-weight: 500; color: var(--text); }
-  .opt-was { font-family: var(--mono); font-size: 12px; color: var(--muted); text-decoration: line-through; text-align: right; }
-
-  .fulfillment-list {
-    margin-top: 16px;
-    padding-top: 16px;
-    border-top: 1px solid var(--line);
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    font-size: 13px;
-    color: var(--text-2);
-  }
-  .fulfillment-row {
-    display: flex;
-    align-items: center;
-    gap: 8px;
   }
 
   /* Footer */
   .site-footer {
     border-top: 1px solid var(--line);
-    padding: 48px 0;
+    padding: 40px 0;
     font-size: 13px;
     color: var(--muted);
   }
-  .footer-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    gap: 32px;
-    margin-bottom: 32px;
+  .footer-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
   }
-  .footer-col { display: flex; flex-direction: column; gap: 8px; }
-  .footer-head { font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 4px; }
-  .footer-col a:hover { color: var(--text); }
+  .footer-links { display: flex; flex-wrap: wrap; gap: 20px; }
+  .footer-links a:hover { color: var(--text); }
 
-  /* Modals & Bag Drawer */
+  /* Lightbox & Modals */
   .backdrop {
     position: fixed;
     inset: 0;
-    background: rgba(31, 27, 22, 0.42);
+    background: rgba(31, 27, 22, 0.56);
     z-index: 80;
     display: none;
     align-items: center;
@@ -548,14 +438,12 @@
     flex-direction: column;
   }
 
-  @media (max-width: 900px) {
-    .wrap, .header-inner { padding: 0 20px; }
+  @media (max-width: 960px) {
+    .wrap, .header-inner { padding: 0 16px; }
     .nav-links { display: none; }
-    .hero { grid-template-columns: 1fr; padding: 32px 0 64px; gap: 28px; }
-    .hero-title { font-size: 36px; }
-    .reading-split, .craft-split, .notes-split, .order-grid { grid-template-columns: 1fr; gap: 32px; }
-    .notes-grid, .footer-grid { grid-template-columns: 1fr; }
-    .section { padding: 64px 0; }
+    .hero-layout { grid-template-columns: 1fr; gap: 24px; padding: 16px 0 48px; }
+    .sticky-rail { position: static; }
+    .diptych, .triptych, .sheet-and-specs { grid-template-columns: 1fr; gap: 24px; }
   }
 </style>
 </head>
@@ -565,13 +453,13 @@
   <div class="header-inner">
     <a href="./unslop.html" class="wordmark">Velora</a>
     <nav class="nav-links">
-      <a href="#reading">Live reading</a>
-      <a href="#materials">Materials</a>
-      <a href="#notes">Wear notes</a>
-      <a href="#order">Order</a>
+      <a href="#lookbook">Lookbook</a>
+      <a href="#day-night">Day &amp; night</a>
+      <a href="#craft">Water &amp; craft</a>
+      <a href="#reading">Tap preview</a>
     </nav>
     <div class="header-right">
-      <button class="text-link" onclick="openQuiz()">Chart matcher</button>
+      <button class="text-link" onclick="openQuiz()">60s chart match</button>
       <button class="bag-btn" onclick="toggleBag(true)">
         <svg class="ico" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
         <span>Bag</span>
@@ -583,189 +471,185 @@
 
 <main class="wrap">
 
-  <div id="quizNotice" style="display:none;margin-top:20px;padding:12px 16px;border-radius:8px;background:var(--card);border:1px solid var(--line-strong);font-size:13px;color:var(--text-2);justify-content:space-between;align-items:center;gap:12px;"></div>
-
-  <!-- 1. Hero -->
-  <section class="hero">
-    <div>
-      <div class="hero-stage" onclick="openLightbox(PHOTOS[activePhoto].src, PHOTOS[activePhoto].caption)">
-        <img id="heroImg" src="./media/unslop_wrist_daylight.jpg" alt="Twilight amethyst and 18k gold paperclip bracelet worn on wrist in morning light" width="1200" height="800">
+  <!-- BAND 1: 4-PHOTO EDITORIAL LOOKBOOK + STICKY BUY RAIL -->
+  <section id="lookbook" class="hero-layout">
+    <div class="lookbook-grid">
+      <div class="photo-frame wide" onclick="openGalleryAt(0)">
+        <img src="./media/unslop_wrist_daylight.jpg" alt="Twilight Amethyst and 18k gold paperclip bracelet worn on bare wrist in morning light" width="1320" height="825">
       </div>
-      <div class="hero-thumbs">
-        <div class="thumb-row" id="thumbRow"></div>
-        <span class="caption-note" id="photoCaption">Worn on wrist in overcast morning light</span>
+      <div class="photo-frame sq" onclick="openGalleryAt(1)">
+        <img src="./media/unslop_hero_collarbone_sweater.jpg" alt="Bracelet styled with oatmeal cashmere knitwear by morning window" width="650" height="650">
       </div>
-    </div>
-
-    <div>
-      <div class="hero-meta">6mm Uruguayan amethyst · 18k gold vermeil over 316L steel</div>
-      <h1 class="hero-title">A quiet piece of amethyst and gold for nights when your head won't clear</h1>
-      <p class="hero-sub">Half paperclip chain, half faceted purple quartz, joined at a flat star-engraved disc. Hold the disc near the top of your phone to read today's natal transit in Safari, with no app to install and no monthly fee.</p>
-      <div class="hero-actions">
-        <a href="#order" class="btn-primary">Order bracelet · $68</a>
-        <a href="#reading" class="btn-secondary">Preview today's reading</a>
+      <div class="photo-frame sq" onclick="openGalleryAt(2)">
+        <img src="./media/sku01_amethyst_halfchain.jpg" alt="Half 18k gold paperclip chain and 6mm faceted amethyst on travertine stone" width="650" height="650">
+      </div>
+      <div class="photo-frame wide" onclick="openGalleryAt(3)">
+        <img src="./media/unslop_gem_light_macro.jpg" alt="Sunlight passing through natural Uruguayan amethyst beads beside brushed 18k gold star disc" width="1320" height="825">
       </div>
     </div>
+
+    <aside class="sticky-rail">
+      <div class="rail-meta">6mm Uruguayan amethyst · 18k gold vermeil</div>
+      <div class="rail-head">
+        <h1 class="rail-title">Twilight Amethyst Bracelet</h1>
+        <span class="rail-price" id="railTopPrice">$68</span>
+      </div>
+      <p class="rail-copy">Half paperclip chain, half faceted natural quartz. Touch the flat star disc to your phone for a quiet daily transit note in Safari, with no app and no monthly fee.</p>
+
+      <div class="option-group">
+        <button type="button" class="opt-row" id="optSingle" onclick="selectOption(false)">
+          <div>
+            <div class="opt-name">Single bracelet</div>
+            <div class="opt-sub">Linen drawer box + lifetime reading</div>
+          </div>
+          <div class="opt-price">$68</div>
+        </button>
+
+        <button type="button" class="opt-row selected" id="optPair" onclick="selectOption(true)">
+          <div>
+            <div class="opt-name">Pair of two (second 50% off)</div>
+            <div class="opt-sub">Keep one and gift one in two boxes</div>
+          </div>
+          <div>
+            <div class="opt-price">$102</div>
+            <div class="opt-was">$136</div>
+          </div>
+        </button>
+      </div>
+
+      <button class="btn-primary" style="width:100%;" id="addBtn" onclick="addToBag()">Add to bag · $102</button>
+      <div style="text-align:center;margin-top:10px;">
+        <button class="text-link" style="font-size:13px;color:var(--accent);font-weight:500;" onclick="openQuiz()">Not sure which stone fits your chart? Match in 60s →</button>
+      </div>
+
+      <div class="rail-notes">
+        <div class="rail-note-row">
+          <svg class="ico" viewBox="0 0 24 24" style="color:var(--muted);"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+          <span>Waterproof 2.5μm 18k gold over 316L steel</span>
+        </div>
+        <div class="rail-note-row">
+          <svg class="ico" viewBox="0 0 24 24" style="color:var(--muted);"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+          <span>No battery or charging · Tap opens Safari</span>
+        </div>
+        <div class="rail-note-row">
+          <svg class="ico" viewBox="0 0 24 24" style="color:var(--muted);"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          <span>Dispatches in 5–7 days · Free DDP shipping &amp; 30-day returns</span>
+        </div>
+      </div>
+    </aside>
   </section>
 
-  <!-- 2. Real Coded Product Preview (Replaces fake AI phone screens) -->
-  <section id="reading" class="section">
-    <div class="reading-split">
-      <div>
-        <h2 class="section-title">What opens when you touch the disc to your phone</h2>
-        <p class="section-lead">Opening a phone at two in the morning usually pulls you into notifications and bright feeds. Touching the clasp disc opens one quiet page in your browser calculated from your solar and lunar longitude, then lets you put the phone back down.</p>
-
-        <div class="date-control">
-          <label class="field-label" for="bdayInput">Enter any birth date to test the live sheet</label>
-          <div class="date-row">
-            <input id="bdayInput" type="date" class="date-inp" value="1996-11-14" onchange="updateReading()">
-            <button class="btn-secondary" style="height:40px;padding:0 14px;" onclick="updateReading()">Update</button>
-          </div>
-          <p class="caption-note" style="margin-top:8px;">Computed locally from Jean Meeus solar and lunar ephemeris tables</p>
-        </div>
-      </div>
-
-      <div class="browser-frame">
-        <div class="browser-bar">
-          <span>veloraritual.com/c/0473</span>
-          <span id="sheetDateLabel">Today</span>
-        </div>
-        <div class="browser-sheet">
-          <div class="coord-row">
-            <span>Sun <span id="sunCoord" class="coord-accent">22° 14′ Scorpio</span></span>
-            <span>Moon <span id="moonCoord" class="coord-accent">06° 42′ Capricorn</span></span>
-            <span id="elementNote">Water + Earth</span>
-          </div>
-          <h3 class="sheet-heading" id="sheetTitle">Step back from tomorrow's unfinished list</h3>
-          <p class="sheet-body" id="sheetBody">With a Scorpio Sun and Capricorn Moon, you tend to replay conversations until you find a concrete fix. Nothing left open tonight needs a verdict before morning. Let the day end unfinished.</p>
-          <div class="breath-bar">
-            <span id="breathText">4s inhale · 6s exhale (6 cycles)</span>
-            <button class="text-link" id="breathBtn" style="font-weight:500;color:var(--accent);" onclick="toggleBreath()">Start 60s pace</button>
-          </div>
-        </div>
-      </div>
+  <!-- BAND 2: FULL-WIDTH DAY-TO-NIGHT VISUAL DIPTYCH -->
+  <section id="day-night" class="band">
+    <div class="band-head">
+      <h2 class="band-title">Worn beside your watch all day, tapped at night</h2>
+      <span class="band-sub">Click any photograph to view full size</span>
     </div>
-  </section>
 
-  <!-- 3. Materials & Bench Specification -->
-  <section id="materials" class="section">
-    <div class="craft-split">
-      <div class="craft-photo" onclick="openLightbox('./media/unslop_clasp_macro_daylight.jpg', 'Full clasp, paperclip links, and faceted 6mm Uruguayan amethyst on cotton paper')">
-        <img src="./media/unslop_clasp_macro_daylight.jpg" alt="Overhead view of bracelet clasp, 18k gold links, faceted amethyst beads, and linen pouch" loading="lazy" width="1200" height="800">
+    <div class="diptych">
+      <div class="visual-card">
+        <figure onclick="openGalleryAt(4)">
+          <img src="./media/unslop_watch_stack_daylight.jpg" alt="Bracelet stacked beside classic leather-strap gold watch and white shirt cuff" loading="lazy" width="900" height="600">
+        </figure>
+        <div class="visual-cap">
+          <span><strong>Flat beside a watch cuff</strong> · Fine paperclip links stack without bulky beads</span>
+          <span class="time-tag">09:00</span>
+        </div>
       </div>
 
-      <div>
-        <h2 class="section-title">Materials and bench specs</h2>
-        <p class="section-lead">Built like everyday fine jewelry first, with the passive transponder sealed invisibly behind the 14mm gold star disc.</p>
-
-        <div class="spec-list">
-          <div class="spec-row">
-            <span class="spec-key">Gemstone</span>
-            <span class="spec-val">6mm faceted natural amethyst, Artigas, Uruguay (natural color zoning, Mohs 7.0)</span>
-          </div>
-          <div class="spec-row">
-            <span class="spec-key">Metal</span>
-            <span class="spec-val">316L surgical stainless steel with 2.5μm vacuum 18k gold PVD</span>
-          </div>
-          <div class="spec-row">
-            <span class="spec-key">Tap disc</span>
-            <span class="spec-val">14mm brushed coin housing a 0.2mm ferrite shield and passive NTAG213 wafer</span>
-          </div>
-          <div class="spec-row">
-            <span class="spec-key">Fit and weight</span>
-            <span class="spec-val">16.5 cm base length + 3.0 cm extender chain · 6.4 g</span>
-          </div>
-          <div class="spec-row">
-            <span class="spec-key">Water and battery</span>
-            <span class="spec-val">Sealed for handwashing, sweat, and rain · No battery or charging ever</span>
-          </div>
+      <div class="visual-card">
+        <figure onclick="openGalleryAt(5)">
+          <img src="./media/unslop_bedside_tap_daylight.jpg" alt="Hand touching brushed gold star disc to top edge of phone on bedside table" loading="lazy" width="900" height="600">
+        </figure>
+        <div class="visual-cap">
+          <span><strong>One bedside touch</strong> · Opens a quiet transit card without noisy app feeds</span>
+          <span class="time-tag">02:14</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 4. Practical Wear Notes -->
-  <section id="notes" class="section">
-    <div class="notes-split">
-      <div>
-        <h2 class="section-title">Designed to stay on your wrist</h2>
-        <p class="section-lead">Four practical choices we made after testing ordinary crystal bracelets and sleep trackers.</p>
+  <!-- BAND 3: 3-PHOTO WATER, CLASP & UNBOXING TRIPTYCH -->
+  <section id="craft" class="band">
+    <div class="band-head">
+      <h2 class="band-title">Everyday water, solid clasp, linen gift box</h2>
+      <span class="band-sub">16.5 cm + 3.0 cm extender · 6.4 g</span>
+    </div>
+
+    <div class="triptych">
+      <div class="visual-card">
+        <figure onclick="openGalleryAt(6)">
+          <img src="./media/unslop_handwash_sink_daylight.jpg" alt="Clear tap water flowing over wrist wearing the 18k gold and amethyst bracelet" loading="lazy" width="600" height="630">
+        </figure>
+        <div class="visual-cap">
+          <span><strong>Waterproof vermeil</strong> · Safe for handwashing, sweat, and rain</span>
+        </div>
       </div>
 
-      <div class="notes-grid">
-        <div class="note-card">
-          <h3>No charging cradle</h3>
-          <p>The disc draws a tiny pulse from your phone only during the half-second you tap it, so there is no battery to degrade and no Bluetooth radio on your skin.</p>
+      <div class="visual-card">
+        <figure onclick="openGalleryAt(7)">
+          <img src="./media/unslop_clasp_macro_daylight.jpg" alt="Overhead view of solid gold lobster clasp, amethyst color zoning, and linen pouch" loading="lazy" width="600" height="630">
+        </figure>
+        <div class="visual-cap">
+          <span><strong>Solid lobster clasp</strong> · Steel jewelry wire instead of fraying elastic</span>
         </div>
-        <div class="note-card">
-          <h3>No monthly membership</h3>
-          <p>Your daily natal reading and tarot pull stay included for the life of the bracelet. We never lock your reading behind a $7 monthly paywall.</p>
-        </div>
-        <div class="note-card">
-          <h3>Lobster clasp instead of elastic</h3>
-          <p>Stretch cords fray and snap after a few months. We string the amethyst side on steel jewelry wire and finish the chain side with a solid lobster clasp.</p>
-        </div>
-        <div class="note-card">
-          <h3>Easy to gift without birth time</h3>
-          <p>Each bracelet ships unlinked in its linen pouch and drawer box. Your recipient enters their own birth date on their first tap.</p>
+      </div>
+
+      <div class="visual-card">
+        <figure onclick="openGalleryAt(8)">
+          <img src="./media/unslop_in_palm_gift_daylight.jpg" alt="Hands holding open linen-lined cream drawer gift box with bracelet inside" loading="lazy" width="600" height="630">
+        </figure>
+        <div class="visual-cap">
+          <span><strong>Ready to gift</strong> · Ships unlinked so they enter their own birth date</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 5. Order -->
-  <section id="order" class="section">
-    <div class="order-grid">
+  <!-- BAND 4: COMPACT LIVE SAFARI PREVIEW + COLLAPSIBLE DETAILS -->
+  <section id="reading" class="band">
+    <div class="sheet-and-specs">
       <div>
-        <h2 class="section-title">Order</h2>
-        <p class="section-lead">Packed in our drawer box with a woven linen pouch and batch stone card. If you aren't happy with the weight or finish on your wrist, send it back within 30 days for a full refund.</p>
-        <div style="margin-top:20px;">
-          <button class="text-link" style="color:var(--accent);font-weight:500;" onclick="openQuiz()">Not sure if amethyst fits your chart? Take the 60-second matcher →</button>
-        </div>
-      </div>
-
-      <div class="order-panel">
-        <div style="display:flex;justify-content:space-between;align-items:baseline;">
-          <span style="font-size:17px;font-weight:500;">Twilight Amethyst Half-Chain Bracelet</span>
-          <span style="font-family:var(--mono);font-size:13px;color:var(--muted);">In stock · Batch 04</span>
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:14px;">
+          <h2 class="band-title" style="font-size:26px;">Live phone screen preview</h2>
+          <div style="display:flex;gap:8px;align-items:center;">
+            <input id="bdayInput" type="date" value="1996-11-14" onchange="updateReading()" style="height:36px;padding:0 10px;border-radius:8px;border:1px solid var(--line-strong);background:var(--card);color:var(--text);font-size:13px;">
+            <button class="btn-secondary" style="height:36px;" onclick="updateReading()">Test date</button>
+          </div>
         </div>
 
-        <div class="option-group">
-          <button type="button" class="opt-row" id="optSingle" onclick="selectOption(false)">
-            <div>
-              <div class="opt-name">Single bracelet</div>
-              <div class="opt-desc">Includes linen pouch, drawer box, and lifetime reading access</div>
+        <div class="browser-frame">
+          <div class="browser-bar">
+            <span>veloraritual.com/c/0473</span>
+            <span id="sheetDateLabel">Today</span>
+          </div>
+          <div class="browser-sheet">
+            <div class="coord-row">
+              <span>Sun <span id="sunCoord" class="coord-accent">22° 24′ Scorpio</span></span>
+              <span>Moon <span id="moonCoord" class="coord-accent">05° 25′ Capricorn</span></span>
+              <span id="elementNote">Earth dominant</span>
             </div>
-            <div class="opt-price">$68</div>
-          </button>
-
-          <button type="button" class="opt-row selected" id="optPair" onclick="selectOption(true)">
-            <div>
-              <div class="opt-name">Pair of two bracelets (second at half price)</div>
-              <div class="opt-desc">Keep one and gift one in a second drawer box</div>
-            </div>
-            <div>
-              <div class="opt-price">$102</div>
-              <div class="opt-was">$136</div>
-            </div>
-          </button>
+            <h3 style="font-family:var(--serif);font-size:23px;font-weight:400;margin:16px 0 8px;" id="sheetTitle">Step back from tomorrow's unfinished list</h3>
+            <p style="font-size:14px;line-height:22px;color:var(--text-2);" id="sheetBody">Born under a Scorpio Sun and Capricorn Moon. Pick the single task that matters before noon tomorrow and leave the rest out of the bedroom.</p>
+          </div>
         </div>
+      </div>
 
-        <button class="btn-primary" style="width:100%;" id="addBtn" onclick="addToBag()">Add to bag · $102</button>
-
-        <div class="fulfillment-list">
-          <div class="fulfillment-row">
-            <svg class="ico" viewBox="0 0 24 24" style="color:var(--muted);"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            <span>Prepared and inspected within 5 to 7 business days</span>
-          </div>
-          <div class="fulfillment-row">
-            <svg class="ico" viewBox="0 0 24 24" style="color:var(--muted);"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-            <span>Free tracked duties-paid delivery to US, UK, EU, Canada, and Australia</span>
-          </div>
-          <div class="fulfillment-row">
-            <svg class="ico" viewBox="0 0 24 24" style="color:var(--muted);"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
-            <span>30-day unworn return window · PayPal and card checkout</span>
-          </div>
+      <div>
+        <h2 class="band-title" style="font-size:26px;margin-bottom:14px;">Specifications &amp; care</h2>
+        <div class="accordion">
+          <details open>
+            <summary><span>Materials &amp; dimensions</span><span>+</span></summary>
+            <p>6mm faceted natural Uruguayan amethyst (Mohs 7.0, natural color zoning) paired with 316L surgical steel coated in 2.5μm vacuum 18k gold PVD. Length: 16.5 cm + 3.0 cm extender. Weight: 6.4 g.</p>
+          </details>
+          <details>
+            <summary><span>How the passive disc works</span><span>+</span></summary>
+            <p>A 0.2mm ferrite shield and NTAG213 wafer sit sealed inside the 14mm gold star coin. Hold it near the top of any iPhone (XR or newer) or NFC-enabled Android phone to open your reading in Safari or Chrome. Zero battery, zero charging, $0/month forever.</p>
+          </details>
+          <details>
+            <summary><span>Shipping &amp; 30-day returns</span><span>+</span></summary>
+            <p>Individually inspected and packed within 5 to 7 business days, followed by free tracked duties-paid delivery. Unworn pieces in their original drawer box may be returned within 30 days for a full refund.</p>
+          </details>
         </div>
       </div>
     </div>
@@ -774,47 +658,32 @@
 </main>
 
 <footer class="site-footer">
-  <div class="wrap">
-    <div class="footer-grid">
-      <div class="footer-col">
-        <span class="wordmark">Velora</span>
-        <p style="max-width:280px;line-height:20px;">Natural gemstone jewelry with a battery-free natal reading disc. Support: support@veloraritual.com</p>
-      </div>
-      <div class="footer-col">
-        <div class="footer-head">Collection</div>
-        <a href="./blush-moonstone-rose-quartz-bracelet.html">Blush Moonstone</a>
-        <a href="./solar-citrine-pyrite-bracelet.html">Solar Citrine</a>
-        <a href="./orbit-calm-spinner-labradorite-bracelet.html">Orbit Labradorite</a>
-        <a href="./shadow-shield-mens-obsidian-bracelet.html">Matte Obsidian</a>
-      </div>
-      <div class="footer-col">
-        <div class="footer-head">Reading</div>
-        <a href="javascript:void(0)" onclick="openQuiz()">Birth-chart matcher</a>
-        <a href="./quiz/c/index.html?id=VL-0473">Tap disc preview</a>
-        <a href="./index.html">Compare dark edition</a>
-      </div>
-      <div class="footer-col">
-        <div class="footer-head">Policies</div>
-        <a href="./policies.html#shipping">Shipping (5–7 days)</a>
-        <a href="./policies.html#returns">30-day returns</a>
-        <a href="./policies.html#privacy">Privacy</a>
-        <a href="./policies.html#terms">Terms</a>
-      </div>
+  <div class="wrap footer-row">
+    <div>
+      <span class="wordmark" style="margin-right:16px;">Velora</span>
+      <span>© 2026 Velora Jewelry · support@veloraritual.com</span>
     </div>
-    <div style="padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;">
-      <span>© 2026 Velora Jewelry</span>
-      <span>Readings are for personal reflection and mindfulness</span>
+    <div class="footer-links">
+      <a href="javascript:void(0)" onclick="openQuiz()">Chart matcher</a>
+      <a href="./policies.html#shipping">Shipping (5–7 days)</a>
+      <a href="./policies.html#returns">30-day returns</a>
+      <a href="./policies.html#privacy">Privacy</a>
+      <a href="./policies.html#terms">Terms</a>
     </div>
   </div>
 </footer>
 
-<!-- Lightbox -->
+<!-- Full-Screen 9-Photo Gallery Lightbox -->
 <div class="backdrop" id="lightbox" onclick="closeLightbox()">
-  <div style="max-width:960px;width:100%;" onclick="event.stopPropagation()">
+  <div style="max-width:1040px;width:100%;" onclick="event.stopPropagation()">
     <img id="lightboxImg" src="" alt="" style="width:100%;max-height:80vh;object-fit:contain;border-radius:12px;background:var(--card);">
-    <div style="margin-top:12px;display:flex;justify-content:space-between;align-items:center;color:var(--card);font-size:13px;">
+    <div style="margin-top:12px;display:flex;justify-content:space-between;align-items:center;gap:12px;color:var(--card);font-size:13px;">
       <span id="lightboxCap"></span>
-      <button class="btn-secondary" style="height:32px;padding:0 12px;" onclick="closeLightbox()">Close</button>
+      <div style="display:flex;gap:8px;">
+        <button class="btn-secondary" style="height:34px;" onclick="stepGallery(-1)">← Prev</button>
+        <button class="btn-secondary" style="height:34px;" onclick="stepGallery(1)">Next →</button>
+        <button class="btn-secondary" style="height:34px;" onclick="closeLightbox()">Close</button>
+      </div>
     </div>
   </div>
 </div>
@@ -830,7 +699,7 @@
 <!-- Bag Drawer -->
 <div class="drawer-backdrop" id="bagDrawer" onclick="if(event.target===this)toggleBag(false)">
   <div class="drawer">
-    <div style="height:60px;padding:0 24px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;">
+    <div style="height:56px;padding:0 24px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;">
       <span style="font-weight:500;">Your bag</span>
       <button class="text-link" onclick="toggleBag(false)">Close</button>
     </div>
@@ -841,49 +710,59 @@
 
 <script src="./quiz/astro-engine.js"></script>
 <script>
-const PHOTOS = [
-  { src: "./media/unslop_wrist_daylight.jpg", caption: "Worn on wrist in overcast morning light" },
-  { src: "./media/sku01_amethyst_halfchain.jpg", caption: "6mm faceted amethyst and 18k gold paperclip links on limestone" },
-  { src: "./media/hero_sku01_macro_seal.jpg", caption: "Close-up of brushed 8-point star disc and natural amethyst" }
+const GALLERY_ITEMS = [
+  { src: "./media/unslop_wrist_daylight.jpg", cap: "1 / 9 · Worn on bare wrist in overcast morning light" },
+  { src: "./media/unslop_hero_collarbone_sweater.jpg", cap: "2 / 9 · Styled with oatmeal cashmere knitwear" },
+  { src: "./media/sku01_amethyst_halfchain.jpg", cap: "3 / 9 · Half 18k gold paperclip chain and 6mm faceted amethyst" },
+  { src: "./media/unslop_gem_light_macro.jpg", cap: "4 / 9 · Natural Uruguayan amethyst translucency and brushed star disc" },
+  { src: "./media/unslop_watch_stack_daylight.jpg", cap: "5 / 9 · Stacked flat beside a leather-strap watch" },
+  { src: "./media/unslop_bedside_tap_daylight.jpg", cap: "6 / 9 · Bedside touch to open private reading" },
+  { src: "./media/unslop_handwash_sink_daylight.jpg", cap: "7 / 9 · Waterproof 2.5μm 18k gold vermeil under running water" },
+  { src: "./media/unslop_clasp_macro_daylight.jpg", cap: "8 / 9 · Solid lobster clasp, steel wire, and raw linen pouch" },
+  { src: "./media/unslop_in_palm_gift_daylight.jpg", cap: "9 / 9 · Ships unlinked in linen-lined drawer box" }
 ];
 
-let activePhoto = 0;
+let galIdx = 0;
 let pairSelected = true;
 let bag = [];
-let breathTimer = null;
 
-function renderThumbs() {
-  const row = document.getElementById("thumbRow");
-  row.innerHTML = PHOTOS.map((p, i) => `
-    <button type="button" class="thumb ${i === activePhoto ? 'active' : ''}" onclick="setPhoto(${i})" aria-label="View photo ${i + 1}">
-      <img src="${p.src}" alt="">
-    </button>
-  `).join("");
+function openGalleryAt(idx) {
+  galIdx = (idx + GALLERY_ITEMS.length) % GALLERY_ITEMS.length;
+  document.getElementById("lightboxImg").src = GALLERY_ITEMS[galIdx].src;
+  document.getElementById("lightboxCap").textContent = GALLERY_ITEMS[galIdx].cap;
+  document.getElementById("lightbox").classList.add("open");
+}
+function stepGallery(delta) {
+  openGalleryAt(galIdx + delta);
+}
+function closeLightbox() {
+  document.getElementById("lightbox").classList.remove("open");
 }
 
-function setPhoto(i) {
-  activePhoto = i;
-  document.getElementById("heroImg").src = PHOTOS[i].src;
-  document.getElementById("photoCaption").textContent = PHOTOS[i].caption;
-  renderThumbs();
+function selectOption(isPair) {
+  pairSelected = isPair;
+  document.getElementById("optSingle").classList.toggle("selected", !isPair);
+  document.getElementById("optPair").classList.toggle("selected", isPair);
+  document.getElementById("addBtn").textContent = "Add to bag · $" + (isPair ? 102 : 68);
+  document.getElementById("railTopPrice").textContent = "$" + (isPair ? 102 : 68);
 }
 
 const NOTES_BY_ELEMENT = {
   Water: {
     title: "Let tonight's replay stop before midnight",
-    body: "Water placements hold onto tone and unspoken details long after a conversation ends. Write down one sentence if you need to remember it tomorrow, then set the phone face down."
+    body: "Water placements hold onto tone long after a conversation ends. Write down one line if needed tomorrow, then set the phone face down."
   },
   Earth: {
     title: "Step back from tomorrow's unfinished list",
-    body: "Strong Earth placements try to solve next week before sleeping tonight. Pick the single task that matters before noon tomorrow and leave the rest out of the bedroom."
+    body: "Pick the single task that matters before noon tomorrow and leave the rest out of the bedroom."
   },
   Air: {
     title: "Close the extra open tabs in your head",
-    body: "Air-heavy charts keep branching into three backup scenarios at night. Come back to physical sensation: cool stone against your wrist and six slow exhales."
+    body: "Come back to physical sensation: cool stone against your wrist and six slow exhales."
   },
   Fire: {
-    title: "Bank your energy instead of spending it late",
-    body: "Fire placements get a second wind of ideas right when the house goes quiet. Save the momentum for morning light when you can act on it cleanly."
+    title: "Bank your energy for morning light",
+    body: "Save tonight's second wind of ideas for tomorrow morning when you can act on it cleanly."
   }
 };
 
@@ -899,54 +778,18 @@ function updateReading() {
   if (!window.VelaAstro) return;
   const chart = window.VelaAstro.computeChart(val, "");
   document.getElementById("sunCoord").textContent = degFmt(chart.sunLon || 232.4) + " " + chart.sun;
-  document.getElementById("moonCoord").textContent = degFmt(chart.moonLon || 276.7) + " " + chart.moon;
+  document.getElementById("moonCoord").textContent = degFmt(chart.moonLon || 275.4) + " " + chart.moon;
   document.getElementById("elementNote").textContent = chart.dominantElement + " dominant";
   const note = NOTES_BY_ELEMENT[chart.dominantElement] || NOTES_BY_ELEMENT.Earth;
   document.getElementById("sheetTitle").textContent = note.title;
   document.getElementById("sheetBody").textContent = "Born under a " + chart.sun + " Sun and " + chart.moon + " Moon. " + note.body;
 }
 
-function toggleBreath() {
-  const btn = document.getElementById("breathBtn");
-  const txt = document.getElementById("breathText");
-  if (breathTimer) {
-    clearInterval(breathTimer);
-    breathTimer = null;
-    txt.textContent = "4s inhale · 6s exhale (6 cycles)";
-    btn.textContent = "Start 60s pace";
-    return;
-  }
-  let sec = 0;
-  btn.textContent = "Stop";
-  const tick = () => {
-    if (sec >= 60) {
-      clearInterval(breathTimer);
-      breathTimer = null;
-      txt.textContent = "Session complete · 6 calm cycles";
-      btn.textContent = "Start again";
-      return;
-    }
-    const phase = sec % 10;
-    const cycle = Math.floor(sec / 10) + 1;
-    txt.textContent = (phase < 4 ? "Inhale slowly (" + (4 - phase) + "s)" : "Exhale slowly (" + (10 - phase) + "s)") + " · Cycle " + cycle + " of 6";
-    sec += 1;
-  };
-  tick();
-  breathTimer = setInterval(tick, 1000);
-}
-
-function selectOption(isPair) {
-  pairSelected = isPair;
-  document.getElementById("optSingle").classList.toggle("selected", !isPair);
-  document.getElementById("optPair").classList.toggle("selected", isPair);
-  document.getElementById("addBtn").textContent = "Add to bag · $" + (isPair ? 102 : 68);
-}
-
 function addToBag() {
   bag.push({
     name: pairSelected ? "Twilight Amethyst Bracelet (Pair of 2)" : "Twilight Amethyst Bracelet",
     price: pairSelected ? 102 : 68,
-    img: PHOTOS[0].src
+    img: GALLERY_ITEMS[0].src
   });
   renderBag();
   toggleBag(true);
@@ -984,16 +827,6 @@ function renderBag() {
 function toggleBag(open) {
   document.getElementById("bagDrawer").classList.toggle("open", open);
 }
-
-function openLightbox(src, cap) {
-  document.getElementById("lightboxImg").src = src;
-  document.getElementById("lightboxCap").textContent = cap || "";
-  document.getElementById("lightbox").classList.add("open");
-}
-function closeLightbox() {
-  document.getElementById("lightbox").classList.remove("open");
-}
-
 function openQuiz() {
   const f = document.getElementById("quizFrame");
   if (!f.src || f.src === location.href) f.src = "./quiz/index.html?mode=flagship";
@@ -1003,9 +836,7 @@ function closeQuiz() {
   document.getElementById("quizModal").classList.remove("open");
 }
 
-// Init
 document.getElementById("sheetDateLabel").textContent = new Date().toLocaleDateString("en-US", { month: "short", day: "numeric" });
-renderThumbs();
 renderBag();
 updateReading();
 </script>

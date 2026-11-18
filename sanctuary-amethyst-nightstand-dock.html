@@ -665,7 +665,7 @@ function renderBag() {
 function toggleCart(open) { document.getElementById("cartMask").classList.toggle("open", open); }
 function openQuiz() {
   const f = document.getElementById("quizIframe");
-  if (!f.src || f.src === location.href) f.src = "./quiz/index.html?mode=flagship";
+  if (!f.src || f.src === location.href) f.src = "./quiz/quiz-sacred-v2.html?mode=flagship";
   document.getElementById("quizModal").classList.add("open");
 }
 function closeQuiz() { document.getElementById("quizModal").classList.remove("open"); }

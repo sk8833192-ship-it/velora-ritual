@@ -1,491 +1,655 @@
 <!DOCTYPE html>
 <html lang="en">
+<!--
+  Image-led editorial edition built following unslop by Damir Sokolovsky (@heydamir), CC BY 4.0 (https://github.com/heydamir/unslop)
+  9 unique overcast-daylight photographs on #f7f4ee warm cotton-paper palette, minimal 1-line captions, live coded Safari sheet
+-->
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Twilight Amethyst &amp; 18K Gold Half-Chain Talisman | VELORA Fine Spiritual Jewelry</title>
+<title>Twilight Amethyst Bracelet | Velora</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --void: #08060E;
-    --temple: #120D20;
-    --ivory: #F6F0E4;
-    --ivory-soft: #CFC5B4;
-    --muted: #8E839F;
-    --gold-light: #F5E2B8;
-    --gold: #DFBF84;
-    --border-gold: rgba(223, 191, 132, 0.22);
-    --sage: #7ED1AE;
-    --aura-r: 132; --aura-g: 74; --aura-b: 204;
-    --display: 'Cinzel', Georgia, serif;
-    --serif: 'Cormorant Garamond', Georgia, serif;
-    --sans: 'Plus Jakarta Sans', -apple-system, sans-serif;
+    --bg: #f7f4ee;
+    --card: #fdfbf7;
+    --raised: #efe9df;
+    --line: rgba(31, 27, 22, 0.08);
+    --line-strong: rgba(31, 27, 22, 0.16);
+    --text: #1f1b16;
+    --text-2: #5e554a;
+    --muted: #6d6459;
+    --accent: #584269;
+    --sans: 'Instrument Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --serif: 'Newsreader', Georgia, serif;
     --mono: 'JetBrains Mono', monospace;
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
   }
+
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; background: var(--void); color: var(--ivory); font-family: var(--sans); -webkit-font-smoothing: antialiased; }
-  body { overflow-x: hidden; background: var(--void); }
+  html {
+    scroll-behavior: smooth;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 22px;
+    font-variant-numeric: tabular-nums;
+    -webkit-font-smoothing: antialiased;
+  }
+  body { background: var(--bg); color: var(--text); overflow-x: hidden; }
   a { color: inherit; text-decoration: none; }
-  button { font-family: inherit; cursor: pointer; }
+  button, input { font-family: inherit; font-variant-numeric: tabular-nums; }
+  button { cursor: pointer; }
 
-  .aura-bg {
-    position: fixed; inset: 0; pointer-events: none; z-index: 0;
-    background:
-      radial-gradient(circle at 26% 20%, rgba(var(--aura-r), var(--aura-g), var(--aura-b), 0.18) 0%, transparent 55%),
-      radial-gradient(circle at 80% 78%, rgba(223, 191, 132, 0.08) 0%, transparent 50%);
-  }
-  header, main, footer { position: relative; z-index: 2; }
-  .container { max-width: 1280px; margin: 0 auto; padding: 0 26px; }
-  .gold-text { background: linear-gradient(135deg, #FFF4D9 0%, #DFBF84 50%, #B48742 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .wrap { max-width: 1320px; margin: 0 auto; padding: 0 32px; }
 
-  .top-nav {
-    position: sticky; top: 0; z-index: 90;
-    background: rgba(8, 6, 14, 0.86); backdrop-filter: blur(18px);
-    border-bottom: 1px solid rgba(223, 191, 132, 0.14);
+  /* Quiet 56px Header */
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    height: 56px;
+    background: rgba(247, 244, 238, 0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
   }
-  .nav-row { max-width: 1320px; margin: 0 auto; padding: 13px 26px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-  .brand-mark { display: flex; align-items: center; gap: 10px; }
-  .brand-mark img { width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--gold); }
-  .brand-mark span { font-family: var(--display); font-size: 20px; letter-spacing: 0.22em; font-weight: 600; }
-  .sec-anchors { display: flex; gap: 24px; font-size: 12px; letter-spacing: 0.11em; text-transform: uppercase; color: var(--ivory-soft); }
-  .sec-anchors a:hover { color: var(--gold); }
+  .header-inner {
+    max-width: 1320px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  .wordmark {
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -0.01em;
+  }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    font-size: 14px;
+    color: var(--text-2);
+  }
+  .nav-links a { transition: color 150ms var(--ease); }
+  .nav-links a:hover { color: var(--text); }
+  .header-right { display: flex; align-items: center; gap: 16px; }
+  .text-link {
+    font-size: 14px;
+    color: var(--text-2);
+    background: none;
+    border: none;
+    padding: 4px 0;
+    transition: color 150ms var(--ease);
+  }
+  .text-link:hover { color: var(--text); }
+  .bag-btn {
+    height: 36px;
+    padding: 0 12px;
+    border-radius: 8px;
+    border: 1px solid var(--line-strong);
+    background: var(--card);
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 150ms var(--ease), transform 120ms var(--ease);
+  }
+  .bag-btn:hover { background: var(--raised); }
+  .bag-btn:active { transform: scale(0.98); }
 
-  .nav-actions { display: flex; align-items: center; gap: 10px; position: relative; }
-  .switcher-details { position: relative; }
-  .switcher-details summary {
-    list-style: none; padding: 7px 14px; border-radius: 999px; border: 1px solid var(--border-gold);
-    background: rgba(255,255,255,0.04); font-size: 12px; color: var(--gold-light); cursor: pointer; font-weight: 600;
-  }
-  .switcher-menu {
-    position: absolute; right: 0; top: 42px; width: 290px; background: #130E24;
-    border: 1px solid var(--gold); border-radius: 18px; padding: 8px; box-shadow: 0 24px 60px rgba(0,0,0,0.85);
-    display: flex; flex-direction: column; gap: 3px; z-index: 120;
-  }
-  .relic-switch-item {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 9px 12px; border-radius: 11px; font-size: 12.5px; color: var(--ivory-soft); transition: all .18s;
-  }
-  .relic-switch-item:hover, .relic-switch-item.cur { background: rgba(223,191,132,0.16); color: var(--gold-light); font-weight: 600; }
-
-  .btn-gold {
-    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-    padding: 16px 32px; border-radius: 999px; border: 1px solid rgba(255,242,212,0.55);
-    background: linear-gradient(135deg, #EDD3A1 0%, #C69B56 55%, #9B7131 100%);
-    color: #110B1C; font-size: 13.5px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase;
-    box-shadow: 0 12px 36px rgba(201,164,106,0.28); transition: transform .22s, box-shadow .22s;
-  }
-  .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 18px 46px rgba(223,191,132,0.44); }
-  .btn-ghost {
-    display: inline-flex; align-items: center; justify-content: center;
-    padding: 15px 24px; border-radius: 999px; border: 1px solid var(--border-gold);
-    background: rgba(255,255,255,0.03); color: var(--ivory); font-size: 12.5px; font-weight: 600; letter-spacing: 0.09em; text-transform: uppercase;
-  }
-  .btn-ghost:hover { border-color: var(--gold); color: var(--gold-light); }
-
-  /* ================= SECTION 1: PURE UNOBSTRUCTED HD HERO GALLERY ================= */
-  .hero-flagship { padding: 42px 0 72px; display: grid; grid-template-columns: 1.06fr 0.94fr; gap: 50px; align-items: center; }
-  .hero-main-frame {
-    position: relative; border-radius: 24px; overflow: hidden;
-    border: 1px solid rgba(223,191,132,0.38); background: #0D0A16;
-    box-shadow: 0 28px 75px rgba(0,0,0,0.82);
-    aspect-ratio: 4 / 3.4; cursor: zoom-in;
-  }
-  .hero-main-frame img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .55s cubic-bezier(.22,.61,.36,1); }
-  .hero-main-frame:hover img { transform: scale(1.035); }
-  .photo-caption-below {
-    display: flex; justify-content: space-between; align-items: center;
-    margin-top: 10px; padding: 0 4px; font-size: 12.5px; color: var(--ivory-soft); font-family: var(--serif); font-style: italic;
-  }
-  .thumb-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 10px; }
-  .thumb-btn {
-    border-radius: 12px; overflow: hidden; border: 1.5px solid rgba(223,191,132,0.2);
-    aspect-ratio: 1.2 / 1; cursor: pointer; opacity: 0.68; transition: all .2s; background: #120D20;
-  }
-  .thumb-btn.active, .thumb-btn:hover { border-color: var(--gold-light); opacity: 1; transform: translateY(-2px); }
-  .thumb-btn img { width: 100%; height: 100%; object-fit: cover; display: block; }
-
-  .kicker-line { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; color: var(--gold); text-transform: uppercase; margin-bottom: 12px; }
-  .hero-h1 { font-family: var(--display); font-size: clamp(32px, 3.8vw, 49px); line-height: 1.13; font-weight: 500; margin-bottom: 16px; }
-  .hero-lead { font-size: 16px; color: var(--ivory-soft); line-height: 1.72; margin-bottom: 24px; }
-  .spec-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 26px; }
-  .spec-chip {
-    font-size: 12px; color: var(--gold-light); background: rgba(223,191,132,0.08);
-    border: 1px solid rgba(223,191,132,0.24); padding: 6px 13px; border-radius: 999px;
+  .ico {
+    width: 16px;
+    height: 16px;
+    stroke: currentColor;
+    stroke-width: 1.5;
+    fill: none;
+    flex: none;
   }
 
-  /* ================= SECTION 2: PROBLEM & SOLUTION ================= */
-  .sec-block { padding: 88px 0; border-top: 1px solid rgba(223,191,132,0.12); scroll-margin-top: 76px; }
-  .prob-grid { display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 48px; align-items: center; }
-  .prob-visual { border-radius: 24px; overflow: hidden; border: 1px solid var(--border-gold); box-shadow: 0 26px 70px rgba(0,0,0,0.72); cursor: zoom-in; }
-  .prob-visual img { width: 100%; display: block; object-fit: cover; transition: transform .5s ease; }
-  .prob-visual:hover img { transform: scale(1.025); }
-  .prob-cap { padding: 16px 20px; background: #120D20; font-family: var(--serif); font-style: italic; font-size: 17.5px; color: var(--gold-light); border-top: 1px solid var(--border-gold); }
-  .diag-card {
-    background: rgba(18, 13, 32, 0.72); border: 1px solid var(--border-gold);
-    border-radius: 20px; padding: 20px 22px; margin-bottom: 14px;
+  .btn-primary {
+    height: 44px;
+    padding: 0 20px;
+    border-radius: 8px;
+    border: 1px solid var(--text);
+    background: var(--text);
+    color: var(--card);
+    font-size: 14px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: opacity 150ms var(--ease), transform 120ms var(--ease);
   }
-  .diag-kicker { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.16em; color: var(--gold); margin-bottom: 5px; }
-  .diag-card h4 { font-family: var(--serif); font-size: 22px; margin-bottom: 6px; color: var(--ivory); }
-  .diag-card p { font-size: 13.8px; color: var(--ivory-soft); line-height: 1.65; }
+  .btn-primary:hover { opacity: 0.88; }
+  .btn-primary:active { transform: scale(0.98); }
 
-  /* ================= SECTION 3: PURE HD CRAFTSMANSHIP & MATERIAL GALLERY ================= */
-  .craft-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px; }
-  .craft-card {
-    border-radius: 24px; overflow: hidden; border: 1px solid var(--border-gold);
-    background: rgba(18, 13, 32, 0.82); box-shadow: 0 20px 54px rgba(0,0,0,0.62);
-    display: flex; flex-direction: column;
+  .btn-secondary {
+    height: 40px;
+    padding: 0 14px;
+    border-radius: 8px;
+    border: 1px solid var(--line-strong);
+    background: var(--raised);
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 150ms var(--ease), transform 120ms var(--ease);
   }
-  .craft-media { aspect-ratio: 4 / 3.4; overflow: hidden; background: #0B0714; border-bottom: 1px solid var(--border-gold); cursor: zoom-in; }
-  .craft-media img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s ease; }
-  .craft-media:hover img { transform: scale(1.04); }
-  .craft-body { padding: 22px 22px 24px; flex: 1; }
-  .craft-body h3 { font-family: var(--serif); font-size: 23px; color: var(--ivory); margin: 4px 0 8px; line-height: 1.2; }
-  .craft-body p { font-size: 13.6px; color: var(--ivory-soft); line-height: 1.65; }
+  .btn-secondary:hover { border-color: rgba(31, 27, 22, 0.3); }
+  .btn-secondary:active { transform: scale(0.98); }
 
-  /* ================= SECTION 4: GEMOLOGY & LIVE READING PREVIEW ================= */
-  .science-grid { display: grid; grid-template-columns: 1.08fr 0.92fr; gap: 44px; align-items: center; }
-  .spec-table { width: 100%; border-collapse: collapse; background: rgba(18,13,32,0.72); border-radius: 20px; overflow: hidden; border: 1px solid var(--border-gold); }
-  .spec-table th, .spec-table td { padding: 15px 18px; border-bottom: 1px solid rgba(223,191,132,0.12); text-align: left; font-size: 13.5px; }
-  .spec-table th { color: var(--gold); font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; width: 34%; }
-  .spec-table td { color: var(--ivory); }
+  /* ================= BAND 1: IMAGE-LED 2x2 LOOKBOOK HERO + STICKY RAIL ================= */
+  .hero-layout {
+    padding: 28px 0 72px;
+    display: grid;
+    grid-template-columns: 1.85fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+  .lookbook-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .photo-frame {
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--raised);
+    border: 1px solid var(--line);
+    cursor: zoom-in;
+  }
+  .photo-frame.wide { grid-column: span 2; aspect-ratio: 16 / 10; }
+  .photo-frame.sq { aspect-ratio: 1 / 1; }
+  .photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: opacity 180ms var(--ease);
+  }
+  .photo-frame:hover img { opacity: 0.94; }
 
-  .tarot-mini-stage {
-    background: linear-gradient(180deg, rgba(24,17,42,0.85), rgba(10,7,18,0.95));
-    border: 1px solid var(--gold); border-radius: 26px; padding: 28px 22px; text-align: center;
+  .sticky-rail {
+    position: sticky;
+    top: 80px;
+    padding: 24px;
+    border-radius: 16px;
+    background: var(--card);
+    border: 1px solid var(--line);
   }
-  .tarot-3d-wrap { width: 230px; height: 330px; margin: 14px auto; perspective: 1000px; cursor: pointer; }
-  .tarot-3d-inner { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; transition: transform 0.85s cubic-bezier(.22,.61,.36,1); }
-  .tarot-3d-inner.flipped { transform: rotateY(180deg); }
-  .t-face {
-    position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden;
-    border-radius: 20px; border: 1.5px solid var(--gold); padding: 20px 16px;
-    display: flex; flex-direction: column; align-items: center; justify-content: space-between;
-    background: radial-gradient(circle at 50% 45%, #221638 0%, #0B0714 100%);
+  .rail-meta {
+    font-family: var(--mono);
+    font-size: 12px;
+    line-height: 16px;
+    color: var(--muted);
+    margin-bottom: 8px;
   }
-  .t-front { transform: rotateY(180deg); }
+  .rail-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .rail-title {
+    font-family: var(--serif);
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 1.12;
+    letter-spacing: -0.015em;
+  }
+  .rail-price {
+    font-family: var(--mono);
+    font-size: 18px;
+    font-weight: 500;
+  }
+  .rail-copy {
+    font-size: 14px;
+    line-height: 21px;
+    color: var(--text-2);
+    margin-bottom: 20px;
+  }
 
-  /* ================= SECTION 5: DEFERRED COMMISSION & UNBOXING ================= */
-  .commission-box {
-    background: linear-gradient(145deg, rgba(24,17,42,0.92) 0%, rgba(10,7,18,0.98) 100%);
-    border: 1.5px solid var(--gold); border-radius: 30px; padding: 42px;
-    display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 44px; align-items: center;
-    box-shadow: 0 30px 90px rgba(0,0,0,0.8);
+  .option-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
   }
-  .tier-card {
-    border: 1.5px solid var(--border-gold); background: rgba(255,255,255,0.03);
-    border-radius: 16px; padding: 15px 18px; margin-bottom: 11px; cursor: pointer;
-    display: flex; justify-content: space-between; align-items: center; transition: all .2s;
+  .opt-row {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 8px;
+    border: 1px solid var(--line-strong);
+    background: var(--bg);
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    transition: border-color 150ms var(--ease), background-color 150ms var(--ease);
   }
-  .tier-card.selected { border-color: var(--gold-light); background: rgba(223,191,132,0.14); }
+  .opt-row.selected {
+    background: var(--card);
+    border-color: var(--accent);
+    box-shadow: inset 0 0 0 1px var(--accent);
+  }
+  .opt-name { font-size: 13.5px; font-weight: 500; color: var(--text); }
+  .opt-sub { font-size: 12px; color: var(--muted); margin-top: 2px; }
+  .opt-price { font-family: var(--mono); font-size: 14px; font-weight: 500; }
+  .opt-was { font-family: var(--mono); font-size: 11.5px; color: var(--muted); text-decoration: line-through; text-align: right; }
 
-  /* Lightbox, Quiz & Cart Modals */
-  .modal-mask { position: fixed; inset: 0; background: rgba(4,3,8,0.88); backdrop-filter: blur(12px); z-index: 220; display: none; align-items: center; justify-content: center; padding: 20px; }
-  .modal-mask.open { display: flex; }
-  .drawer-mask { position: fixed; inset: 0; background: rgba(3,2,8,0.74); backdrop-filter: blur(6px); z-index: 210; display: none; justify-content: flex-end; }
-  .drawer-mask.open { display: flex; }
-  .cart-panel { width: 100%; max-width: 420px; height: 100%; background: #110C20; border-left: 1px solid var(--gold); display: flex; flex-direction: column; }
-
-  @media (max-width: 980px) {
-    .hero-flagship, .prob-grid, .science-grid, .commission-box, .craft-grid { grid-template-columns: 1fr; }
-    .sec-anchors { display: none; }
+  .rail-notes {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 12.5px;
+    color: var(--text-2);
   }
-  @media (max-width: 600px) {
-    .commission-box { padding: 24px 18px; }
+  .rail-note-row { display: flex; align-items: center; gap: 8px; }
+
+  /* ================= VISUAL BANDS ================= */
+  .band {
+    padding: 64px 0;
+    border-top: 1px solid var(--line);
+    scroll-margin-top: 60px;
+  }
+  .band-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .band-title {
+    font-family: var(--serif);
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+  }
+  .band-sub {
+    font-size: 14px;
+    color: var(--muted);
+  }
+
+  /* Band 2: Large 2-Photo Day-to-Night Diptych */
+  .diptych {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .visual-card figure {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    background: var(--raised);
+    aspect-ratio: 3 / 2;
+    cursor: zoom-in;
+  }
+  .visual-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .visual-cap {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    font-size: 13.5px;
+    line-height: 20px;
+    color: var(--text-2);
+  }
+  .visual-cap strong { font-weight: 500; color: var(--text); }
+  .time-tag { font-family: var(--mono); font-size: 12px; color: var(--muted); flex: none; }
+
+  /* Band 3: 3-Photo Craft, Water & Gift Triptych */
+  .triptych {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .triptych .visual-card figure { aspect-ratio: 1 / 1.05; }
+
+  /* Band 4: Compact Interactive Reading Sheet + Collapsible Specs */
+  .sheet-and-specs {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 40px;
+    align-items: start;
+  }
+  .browser-frame {
+    border-radius: 16px;
+    padding: 8px;
+    background: var(--raised);
+    border: 1px solid var(--line);
+  }
+  .browser-bar {
+    height: 32px;
+    padding: 0 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .browser-sheet {
+    border-radius: 8px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    padding: 24px;
+  }
+  .coord-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--line);
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .coord-accent { color: var(--accent); font-weight: 500; }
+
+  .accordion { border-top: 1px solid var(--line); }
+  .accordion details {
+    border-bottom: 1px solid var(--line);
+    padding: 16px 0;
+  }
+  .accordion summary {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14.5px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  .accordion summary::-webkit-details-marker { display: none; }
+  .accordion p {
+    margin-top: 10px;
+    font-size: 13.5px;
+    line-height: 21px;
+    color: var(--text-2);
+  }
+
+  /* Footer */
+  .site-footer {
+    border-top: 1px solid var(--line);
+    padding: 40px 0;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .footer-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .footer-links { display: flex; flex-wrap: wrap; gap: 20px; }
+  .footer-links a:hover { color: var(--text); }
+
+  /* Lightbox & Modals */
+  .backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(31, 27, 22, 0.56);
+    z-index: 80;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+  .backdrop.open { display: flex; }
+  .drawer-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(31, 27, 22, 0.36);
+    z-index: 90;
+    display: none;
+    justify-content: flex-end;
+  }
+  .drawer-backdrop.open { display: flex; }
+  .drawer {
+    width: 100%;
+    max-width: 400px;
+    height: 100%;
+    background: var(--card);
+    border-left: 1px solid var(--line);
+    display: flex;
+    flex-direction: column;
+  }
+
+  @media (max-width: 960px) {
+    .wrap, .header-inner { padding: 0 16px; }
+    .nav-links { display: none; }
+    .hero-layout { grid-template-columns: 1fr; gap: 24px; padding: 16px 0 48px; }
+    .sticky-rail { position: static; }
+    .diptych, .triptych, .sheet-and-specs { grid-template-columns: 1fr; gap: 24px; }
   }
 </style>
 </head>
 <body>
 
-<div class="aura-bg"></div>
-
-<header class="top-nav">
-  <div class="nav-row">
-    <a href="./index.html" class="brand-mark">
-      <img src="./media/vela_emblem.jpg" alt="VELORA">
-      <span>VELORA</span>
-    </a>
-    <nav class="sec-anchors">
-      <a href="#problem">01 · What It Solves</a>
-      <a href="#craft">02 · Fine Craftsmanship</a>
-      <a href="#science">03 · Gemstone Details</a>
-      <a href="#commission">04 · Commission</a>
+<header class="site-header">
+  <div class="header-inner">
+    <a href="./unslop.html" class="wordmark">Velora</a>
+    <nav class="nav-links">
+      <a href="#lookbook">Lookbook</a>
+      <a href="#day-night">Day &amp; night</a>
+      <a href="#craft">Water &amp; craft</a>
+      <a href="#reading">Tap preview</a>
     </nav>
-    <div class="nav-actions">
-      <details class="switcher-details">
-        <summary>Boutique Dedicated Pages (10) ▾</summary>
-        <div class="switcher-menu">
-          <a href="./index.html" class="relic-switch-item cur"><span>Twilight Amethyst</span><small>$68</small></a>
-<a href="./blush-moonstone-rose-quartz-bracelet.html" class="relic-switch-item "><span>Blush Moonstone &amp; Pearl</span><small>$72</small></a>
-<a href="./solar-citrine-pyrite-bracelet.html" class="relic-switch-item "><span>Solar Citrine &amp; Pyrite</span><small>$72</small></a>
-<a href="./luminous-clear-quartz-bracelet.html" class="relic-switch-item "><span>Luminous Clear Quartz</span><small>$68</small></a>
-<a href="./orbit-calm-spinner-labradorite-bracelet.html" class="relic-switch-item "><span>Orbit Spinner Labradorite</span><small>$78</small></a>
-<a href="./celestial-compass-malachite-necklace.html" class="relic-switch-item "><span>Malachite Compass Necklace</span><small>$84</small></a>
-<a href="./shadow-shield-mens-obsidian-bracelet.html" class="relic-switch-item "><span>Shadow Matte Obsidian</span><small>$74</small></a>
-<a href="./apex-focus-mens-tigers-eye-bracelet.html" class="relic-switch-item "><span>Apex Tiger&#x27;s Eye</span><small>$74</small></a>
-<a href="./twin-orbit-connected-duo-set.html" class="relic-switch-item "><span>Twin Orbit Connected Duo</span><small>$118</small></a>
-<a href="./sanctuary-amethyst-nightstand-dock.html" class="relic-switch-item "><span>Sanctuary Geode Altar</span><small>$88</small></a>
-        </div>
-      </details>
-      <button onclick="openQuiz()" style="background:rgba(223,191,132,0.16);border:1px solid var(--gold);color:var(--gold-light);padding:7px 13px;border-radius:999px;font-size:12px;font-weight:600;">✦ 60s Chart Match</button>
-      <button onclick="toggleCart(true)" style="background:transparent;border:1px solid var(--border-gold);color:var(--ivory);padding:7px 13px;border-radius:999px;font-size:12px;">Bag (<span id="bagCnt">0</span>)</button>
+    <div class="header-right">
+      <button class="text-link" onclick="openQuiz()">60s chart match</button>
+      <button class="bag-btn" onclick="toggleBag(true)">
+        <svg class="ico" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span>Bag</span>
+        <span id="bagCount" style="font-family:var(--mono);color:var(--muted);">0</span>
+      </button>
     </div>
   </div>
 </header>
 
-<main class="container">
+<main class="wrap">
 
-  <div id="quizMatchBar" style="display:none;margin-top:20px;padding:12px 20px;border-radius:14px;border:1px solid var(--gold);background:rgba(223,191,132,0.13);font-size:13.5px;color:var(--gold-light);justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;"></div>
-
-  <!-- ================= 1. HERO: PURE UNOBSTRUCTED HD PRODUCT PHOTOGRAPHY ================= -->
-  <section class="hero-flagship">
-    <div>
-      <div class="hero-main-frame" onclick="openHeroLightbox()">
-        <img id="heroMainImg" src="./media/hero_sku01_wrist_stack.jpg" alt="Twilight Amethyst &amp; 18K Gold Half-Chain Talisman">
+  <!-- BAND 1: 4-PHOTO EDITORIAL LOOKBOOK + STICKY BUY RAIL -->
+  <section id="lookbook" class="hero-layout">
+    <div class="lookbook-grid">
+      <div class="photo-frame wide" onclick="openGalleryAt(0)">
+        <img src="./media/unslop_wrist_daylight.jpg" alt="Twilight Amethyst and 18k gold paperclip bracelet worn on bare wrist in morning light" width="1320" height="825">
       </div>
-      <div class="photo-caption-below">
-        <span id="heroMediaCaption">On-Wrist Stack · 18K Gold Paperclip Chain &amp; Natural Amethyst</span>
-        <span style="font-family:var(--mono);font-style:normal;font-size:11px;color:var(--gold);cursor:pointer;" onclick="openHeroLightbox()">Click photo for HD zoom +</span>
+      <div class="photo-frame sq" onclick="openGalleryAt(1)">
+        <img src="./media/unslop_hero_collarbone_sweater.jpg" alt="Bracelet styled with oatmeal cashmere knitwear by morning window" width="650" height="650">
       </div>
-      <div class="thumb-strip" id="heroThumbs"></div>
-    </div>
-
-    <div>
-      <div class="kicker-line">SIGNATURE COLLECTION · NO. 01</div>
-      <h1 class="hero-h1">Built for the Mind That Still Races at <span class='gold-text'>2:14 AM.</span></h1>
-      <p class="hero-lead">When your body is exhausted in the dark, yet yesterday&#x27;s conversations and tomorrow&#x27;s worries refuse to quiet down. Half 18K champagne-gold paperclip chain meets earth-mined Uruguayan amethyst—touch its brushed sunburst medallion to your phone for a calm, private natal reflection.</p>
-
-      <div class="spec-chips">
-        <span class="spec-chip">✦ Natural Earth-Mined Stone</span>
-        <span class="spec-chip">✦ 2.5μm Vacuum 18K Gold</span>
-        <span class="spec-chip">✦ Waterproof Daily Wear</span>
-        <span class="spec-chip">✦ Zero Battery · $0/mo Access</span>
+      <div class="photo-frame sq" onclick="openGalleryAt(2)">
+        <img src="./media/sku01_amethyst_halfchain.jpg" alt="Half 18k gold paperclip chain and 6mm faceted amethyst on travertine stone" width="650" height="650">
       </div>
-
-      <div style="display:flex;flex-wrap:wrap;gap:14px;">
-        <a href="#problem" class="btn-gold">See How It Quiets Your Night ↓</a>
-        <button class="btn-ghost" onclick="openQuiz()">Match My Birth Chart (60s) ✦</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= 2. PROBLEM & SOLUTION ANATOMY ================= -->
-  <section id="problem" class="sec-block">
-    <div class="prob-grid">
-      <div class="prob-visual" onclick="openLightbox('./media/hero_sku01_2am_relief.jpg', '2:14 AM · One quiet touch replaces 45 minutes of anxious scrolling with a single grounded lunar reflection.')">
-        <img src="./media/hero_sku01_2am_relief.jpg" alt="Twilight Amethyst &amp; 18K Gold Half-Chain Talisman">
-        <div class="prob-cap">“2:14 AM · One quiet touch replaces 45 minutes of anxious scrolling with a single grounded lunar reflection.”</div>
-      </div>
-      <div>
-        <div class="kicker-line">WHY YOU WAKE UP DRAINED</div>
-        <h2 style="font-family:var(--display);font-size:clamp(28px,3.4vw,42px);line-height:1.15;margin-bottom:22px;">
-          Overthinking Isn't a Character Flaw.<br><span class='gold-text'>It's an Unanchored Nervous System.</span>
-        </h2>
-        <div class="diag-card">
-              <div class="diag-kicker">01 · THE 2:00 AM DOOMSCROLL TRAP</div>
-              <h4>Opening Phone Apps Wakes Your Mind Further</h4>
-              <p>Unlocking your phone to hunt through noisy meditation or horoscope apps floods your eyes with feeds and red notifications. Touching your medallion opens one quiet, dark-lit reflection card so you can exhale and rest.</p>
-            </div>
-<div class="diag-card">
-              <div class="diag-kicker">02 · ELEVATED FINE-JEWELRY SILHOUETTE</div>
-              <h4>Why Ordinary Elastic Bead Strings Stay in a Drawer</h4>
-              <p>Traditional round stretch beads look casual beside a fine watch. Our half-18K-gold paperclip chain and micro-faceted natural amethyst drape like heirloom jewelry from morning meetings to evening rest.</p>
-            </div>
-<div class="diag-card">
-              <div class="diag-kicker">03 · NOTHING TO CHARGE · ZERO MONTHLY FEES</div>
-              <h4>Pure Jewelry Without Cords, Screens, or Subscriptions</h4>
-              <p>Wearables die every three days and charge $70/year just to read your own state. VELORA is pure natural stone and solid gold-plated steel—zero batteries, zero charging, and $0/month forever.</p>
-            </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= 3. PURE HD JEWELRY CRAFTSMANSHIP & MINERAL ORIGIN ================= -->
-  <section id="craft" class="sec-block">
-    <div style="text-align:center;max-width:760px;margin:0 auto;">
-      <div class="kicker-line">FINE JEWELRY CRAFTSMANSHIP &amp; PROVENANCE</div>
-      <h2 style="font-family:var(--display);font-size:clamp(28px,3.5vw,43px);line-height:1.15;margin-bottom:10px;">
-        Solid <span class="gold-text">18K Vacuum Gold</span> &amp; Untouched Earth Crystal.
-      </h2>
-      <p style="font-size:15px;color:var(--ivory-soft);">Pure, natural jewelry materials photographed in high definition—click any detail below to inspect full-resolution texture.</p>
-    </div>
-    <div class="craft-grid">
-      <article class="craft-card">
-              <div class="craft-media" onclick="openLightbox('./media/hero_sku01_clasp_craft.jpg', '2.5μm Vacuum 18K Gold &amp; Solid 316L Core')">
-                <img src="./media/hero_sku01_clasp_craft.jpg" alt="2.5μm Vacuum 18K Gold &amp; Solid 316L Core">
-              </div>
-              <div class="craft-body">
-                <div class="diag-kicker">01 · FINE JEWELRY HARDWARE</div>
-                <h3>2.5μm Vacuum 18K Gold &amp; Solid 316L Core</h3>
-                <p>Crafted with thick vacuum-bonded 18K champagne gold over hypoallergenic surgical steel—delivering warm heirloom weight that never turns wrists green. Concealed neatly inside the smooth gold medallion sits an invisible battery-free touch core.</p>
-              </div>
-            </article>
-<article class="craft-card">
-              <div class="craft-media" onclick="openLightbox('./media/hero_sku01_waterproof.jpg', 'Sweat, Rain &amp; Handwash Resistant')">
-                <img src="./media/hero_sku01_waterproof.jpg" alt="Sweat, Rain &amp; Handwash Resistant">
-              </div>
-              <div class="craft-body">
-                <div class="diag-kicker">02 · EVERYDAY WATERPROOF WEAR</div>
-                <h3>Sweat, Rain &amp; Handwash Resistant</h3>
-                <p>Designed to stay on your wrist through busy days, handwashing, and summer humidity without losing its luster—zero charging ports, zero seams, zero maintenance.</p>
-              </div>
-            </article>
-<article class="craft-card">
-              <div class="craft-media" onclick="openLightbox('./media/v2_sacred_geode_origin.jpg', 'Hand-Selected Natural Mineral Veins')">
-                <img src="./media/v2_sacred_geode_origin.jpg" alt="Hand-Selected Natural Mineral Veins">
-              </div>
-              <div class="craft-body">
-                <div class="diag-kicker">03 · AUTHENTIC EARTH GEMSTONES</div>
-                <h3>Hand-Selected Natural Mineral Veins</h3>
-                <p>Every bead is cut from genuine earth-mined stone with natural internal crystal inclusions—never dyed glass or synthetic plastic—accompanied by a numbered batch authenticity card.</p>
-              </div>
-            </article>
-    </div>
-  </section>
-
-  <!-- ================= 4. GEMOLOGICAL SPECIFICATION & READING PREVIEW ================= -->
-  <section id="science" class="sec-block">
-    <div class="science-grid">
-      <div>
-        <div class="kicker-line">ATELIER SPECIFICATION</div>
-        <h2 style="font-family:var(--display);font-size:clamp(26px,3.3vw,40px);line-height:1.15;margin-bottom:18px;">
-          Hand-Set Earth Gemstone.<br><span class="gold-text">Built for Everyday Grace.</span>
-        </h2>
-        <table class="spec-table">
-          <tr><th>Gemstone Origin</th><td>100% Natural Crystalline Amethyst (SiO₂) · Artigas Region, Uruguay</td></tr>
-          <tr><th>Cut &amp; Clarity</th><td>6mm Hand-Faceted Cut · Authentic Natural Internal Veils · Mohs 7.0</td></tr>
-          <tr><th>Precious Metal</th><td>Hypoallergenic 316L Core + Thick 2.5μm Vacuum 18K Champagne Gold</td></tr>
-          <tr><th>Hidden Touch Seal</th><td>Concealed Battery-Free Core Inside Gold Medallion (Zero Charging Forever)</td></tr>
-          <tr><th>Water Resistance</th><td>Sealed Against Sweat, Rain &amp; Daily Handwashing</td></tr>
-          <tr><th>Authenticity</th><td>Numbered Batch Natural Gemstone Certificate Included</td></tr>
-        </table>
-      </div>
-
-      <div class="tarot-mini-stage">
-        <div class="kicker-line" style="margin-bottom:4px;">PRIVATE NATAL CARD PREVIEW</div>
-        <h3 style="font-family:var(--serif);font-size:25px;font-weight:500;">Tap Emblem to Preview Your Reading</h3>
-        <div class="tarot-3d-wrap" onclick="flipTarot()">
-          <div class="tarot-3d-inner" id="tarotInner">
-            <div class="t-face">
-              <span style="font-family:var(--mono);font-size:10px;color:var(--gold);letter-spacing:.18em;">MEDALLION SEAL</span>
-              <div style="width:92px;height:92px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#FFF3D1,#DFBF84 48%,#8F6628);display:flex;align-items:center;justify-content:center;font-size:34px;color:#281A06;box-shadow:0 0 30px rgba(223,191,132,0.4);">✺</div>
-              <span style="font-family:var(--serif);font-style:italic;color:var(--ivory-soft);">Click to preview tonight's card</span>
-            </div>
-            <div class="t-face t-front">
-              <span style="font-family:var(--mono);font-size:10px;color:var(--gold);">☉ 24° SCORPIO · ☽ 11° PISCES</span>
-              <div>
-                <div style="font-size:38px;color:var(--gold-light);">✦</div>
-                <div style="font-family:var(--display);font-size:18px;color:var(--gold-light);margin-top:6px;">XVII · THE STAR</div>
-              </div>
-              <p style="font-family:var(--serif);font-style:italic;font-size:15.5px;line-height:1.45;">“Release tonight's replay loop. What is meant for you does not require your anxiety.”</p>
-              <span style="font-family:var(--mono);font-size:10px;color:var(--sage);">$0/MO LIFETIME ACCESS</span>
-            </div>
-          </div>
-        </div>
+      <div class="photo-frame wide" onclick="openGalleryAt(3)">
+        <img src="./media/unslop_gem_light_macro.jpg" alt="Sunlight passing through natural Uruguayan amethyst beads beside brushed 18k gold star disc" width="1320" height="825">
       </div>
     </div>
 
-    <!-- Why Collectors Upgrade Comparison -->
-    <div style="margin-top:46px;background:rgba(18,13,32,0.72);border:1px solid var(--border-gold);border-radius:22px;overflow:hidden;">
-      <div style="padding:18px 24px;border-bottom:1px solid var(--border-gold);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
-        <span style="font-family:var(--mono);font-size:11px;letter-spacing:0.16em;color:var(--gold);">WHY WOMEN CHOOSE VELORA</span>
-        <span style="font-size:12.5px;color:var(--ivory-soft);">Fine jewelry warmth without subscription wearables</span>
+    <aside class="sticky-rail">
+      <div class="rail-meta">6mm Uruguayan amethyst · 18k gold vermeil</div>
+      <div class="rail-head">
+        <h1 class="rail-title">Twilight Amethyst Bracelet</h1>
+        <span class="rail-price" id="railTopPrice">$68</span>
       </div>
-      <div style="overflow-x:auto;">
-        <table style="width:100%;border-collapse:collapse;font-size:13.5px;min-width:620px;">
-          <thead>
-            <tr style="border-bottom:1px solid rgba(223,191,132,0.16);text-align:left;">
-              <th style="padding:14px 20px;color:var(--muted);font-weight:500;">Comparison</th>
-              <th style="padding:14px 20px;color:var(--gold-light);background:rgba(223,191,132,0.1);">✦ VELORA Fine Talisman</th>
-              <th style="padding:14px 20px;color:var(--muted);">Ordinary Bead Bracelets</th>
-              <th style="padding:14px 20px;color:var(--muted);">Electronic Sleep Rings</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
-              <td style="padding:13px 20px;color:var(--ivory-soft);">Late-Night Calm</td>
-              <td style="padding:13px 20px;color:var(--sage);font-weight:600;background:rgba(223,191,132,0.06);">✓ One Gentle Touch · Private Natal Reflection</td>
-              <td style="padding:13px 20px;color:var(--muted);">✕ Decorative beads only</td>
-              <td style="padding:13px 20px;color:var(--muted);">✕ Stressful sleep score charts</td>
-            </tr>
-            <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
-              <td style="padding:13px 20px;color:var(--ivory-soft);">Monthly Membership</td>
-              <td style="padding:13px 20px;color:var(--sage);font-weight:600;background:rgba(223,191,132,0.06);">✓ $0 / Month Forever (Included)</td>
-              <td style="padding:13px 20px;color:var(--muted);">— N/A</td>
-              <td style="padding:13px 20px;color:var(--muted);">✕ $6.99/mo ($84/yr recurring fee)</td>
-            </tr>
-            <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
-              <td style="padding:13px 20px;color:var(--ivory-soft);">Charging &amp; Batteries</td>
-              <td style="padding:13px 20px;color:var(--sage);font-weight:600;background:rgba(223,191,132,0.06);">✓ Zero Batteries · Pure Natural Jewelry</td>
-              <td style="padding:13px 20px;color:var(--muted);">✓ Zero Batteries</td>
-              <td style="padding:13px 20px;color:var(--muted);">✕ Needs charging every 3–5 days</td>
-            </tr>
-            <tr>
-              <td style="padding:13px 20px;color:var(--ivory-soft);">Materials</td>
-              <td style="padding:13px 20px;color:var(--sage);font-weight:600;background:rgba(223,191,132,0.06);">✓ 316L + 2.5μm 18K Gold + Natural Gemstone</td>
-              <td style="padding:13px 20px;color:var(--muted);">✕ Thin brass plating fades fast</td>
-              <td style="padding:13px 20px;color:var(--muted);">✕ Chunky metal hardware</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
+      <p class="rail-copy">Half paperclip chain, half faceted natural quartz. Touch the flat star disc to your phone for a quiet daily transit note in Safari, with no app and no monthly fee.</p>
 
-  <!-- ================= 5. DEFERRED COMMISSION & GIFT BOX PRESENTATION ================= -->
-  <section id="commission" class="sec-block" style="padding-bottom:110px;">
-    <div class="commission-box">
-      <div>
-        <div style="border-radius:22px;overflow:hidden;border:1px solid var(--gold);cursor:zoom-in;" onclick="openLightbox('./media/hero_sku01_dark_reliquary_box.jpg', 'VELORA Velvet Drawer Box, Instruction Card & Numbered Gemstone Certificate')">
-          <img src="./media/hero_sku01_dark_reliquary_box.jpg" alt="VELORA Gift Box Presentation" style="width:100%;aspect-ratio:4/3.1;object-fit:cover;display:block;">
-        </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px;font-size:12.5px;color:var(--ivory-soft);">
-          <div style="padding:10px 12px;border-radius:12px;background:rgba(255,255,255,0.03);border:1px solid var(--border-gold);">✦ Velvet Drawer Box &amp; Certificate</div>
-          <div style="padding:10px 12px;border-radius:12px;background:rgba(255,255,255,0.03);border:1px solid var(--border-gold);">✦ Free Tracked DDP Delivery</div>
-        </div>
-      </div>
-
-      <div>
-        <div class="kicker-line">ATELIER COMMISSION · GIFT-READY PRESENTATION</div>
-        <h2 style="font-family:var(--display);font-size:clamp(26px,3.1vw,36px);line-height:1.15;margin-bottom:8px;">Twilight Amethyst &amp; 18K Gold Half-Chain Talisman</h2>
-        <p style="font-size:14px;color:var(--ivory-soft);margin-bottom:18px;">
-          Arrives in our signature velvet drawer box with numbered Natural Gemstone Certificate and <b>$0/month lifetime access</b> to your private natal sanctuary.
-        </p>
-
-        
-        <div class="tier-card" id="tier1" onclick="selectTier(false)">
+      <div class="option-group">
+        <button type="button" class="opt-row" id="optSingle" onclick="selectOption(false)">
           <div>
-            <b>1 × Single Piece</b>
-            <div style="font-size:12px;color:var(--muted);">Includes Velvet Gift Box, Certificate &amp; Lifetime Access</div>
+            <div class="opt-name">Single bracelet</div>
+            <div class="opt-sub">Linen drawer box + lifetime reading</div>
           </div>
-          <span style="font-family:var(--display);font-size:22px;color:var(--gold-light);">$68</span>
-        </div>
-        <div class="tier-card selected" id="tier2" onclick="selectTier(true)">
-          <div>
-            <b style="color:var(--gold-light);">2 × Sacred Twin Pairing · 2nd Piece 50% Off</b>
-            <div style="font-size:12px;color:var(--ivory-soft);">Layer two stones or gift someone close in a second velvet box</div>
-          </div>
-          <div style="text-align:right;">
-            <span style="font-family:var(--display);font-size:22px;color:var(--gold-light);">$102</span>
-            <div style="font-size:11.5px;color:var(--muted);text-decoration:line-through;">$136</div>
-          </div>
-        </div>
-        
-        
-
-        <button class="btn-gold" style="width:100%;margin-top:10px;font-size:14.5px;" id="mainBuyBtn" onclick="addToBag()">
-          Add to Bag — $102.00 ✦
+          <div class="opt-price">$68</div>
         </button>
 
-        <div style="margin-top:12px;padding:10px 14px;border-radius:12px;background:rgba(223,191,132,0.07);border:1px solid rgba(223,191,132,0.2);font-size:12px;color:var(--ivory-soft);line-height:1.5;">
-          ✦ <b style="color:var(--gold-light);">Atelier Batch Preparation:</b> Individually inspected, encoded &amp; gift-boxed within <b>5–7 business days</b> · Free Tracked DDP Delivery.
+        <button type="button" class="opt-row selected" id="optPair" onclick="selectOption(true)">
+          <div>
+            <div class="opt-name">Pair of two (second 50% off)</div>
+            <div class="opt-sub">Keep one and gift one in two boxes</div>
+          </div>
+          <div>
+            <div class="opt-price">$102</div>
+            <div class="opt-was">$136</div>
+          </div>
+        </button>
+      </div>
+
+      <button class="btn-primary" style="width:100%;" id="addBtn" onclick="addToBag()">Add to bag · $102</button>
+      <div style="text-align:center;margin-top:10px;">
+        <button class="text-link" style="font-size:13px;color:var(--accent);font-weight:500;" onclick="openQuiz()">Not sure which stone fits your chart? Match in 60s →</button>
+      </div>
+
+      <div class="rail-notes">
+        <div class="rail-note-row">
+          <svg class="ico" viewBox="0 0 24 24" style="color:var(--muted);"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+          <span>Waterproof 2.5μm 18k gold over 316L steel</span>
+        </div>
+        <div class="rail-note-row">
+          <svg class="ico" viewBox="0 0 24 24" style="color:var(--muted);"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+          <span>No battery or charging · Tap opens Safari</span>
+        </div>
+        <div class="rail-note-row">
+          <svg class="ico" viewBox="0 0 24 24" style="color:var(--muted);"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          <span>Dispatches in 5–7 days · Free DDP shipping &amp; 30-day returns</span>
+        </div>
+      </div>
+    </aside>
+  </section>
+
+  <!-- BAND 2: FULL-WIDTH DAY-TO-NIGHT VISUAL DIPTYCH -->
+  <section id="day-night" class="band">
+    <div class="band-head">
+      <h2 class="band-title">Worn beside your watch all day, tapped at night</h2>
+      <span class="band-sub">Click any photograph to view full size</span>
+    </div>
+
+    <div class="diptych">
+      <div class="visual-card">
+        <figure onclick="openGalleryAt(4)">
+          <img src="./media/unslop_watch_stack_daylight.jpg" alt="Bracelet stacked beside classic leather-strap gold watch and white shirt cuff" loading="lazy" width="900" height="600">
+        </figure>
+        <div class="visual-cap">
+          <span><strong>Flat beside a watch cuff</strong> · Fine paperclip links stack without bulky beads</span>
+          <span class="time-tag">09:00</span>
+        </div>
+      </div>
+
+      <div class="visual-card">
+        <figure onclick="openGalleryAt(5)">
+          <img src="./media/unslop_bedside_tap_daylight.jpg" alt="Hand touching brushed gold star disc to top edge of phone on bedside table" loading="lazy" width="900" height="600">
+        </figure>
+        <div class="visual-cap">
+          <span><strong>One bedside touch</strong> · Opens a quiet transit card without noisy app feeds</span>
+          <span class="time-tag">02:14</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BAND 3: 3-PHOTO WATER, CLASP & UNBOXING TRIPTYCH -->
+  <section id="craft" class="band">
+    <div class="band-head">
+      <h2 class="band-title">Everyday water, solid clasp, linen gift box</h2>
+      <span class="band-sub">16.5 cm + 3.0 cm extender · 6.4 g</span>
+    </div>
+
+    <div class="triptych">
+      <div class="visual-card">
+        <figure onclick="openGalleryAt(6)">
+          <img src="./media/unslop_handwash_sink_daylight.jpg" alt="Clear tap water flowing over wrist wearing the 18k gold and amethyst bracelet" loading="lazy" width="600" height="630">
+        </figure>
+        <div class="visual-cap">
+          <span><strong>Waterproof vermeil</strong> · Safe for handwashing, sweat, and rain</span>
+        </div>
+      </div>
+
+      <div class="visual-card">
+        <figure onclick="openGalleryAt(7)">
+          <img src="./media/unslop_clasp_macro_daylight.jpg" alt="Overhead view of solid gold lobster clasp, amethyst color zoning, and linen pouch" loading="lazy" width="600" height="630">
+        </figure>
+        <div class="visual-cap">
+          <span><strong>Solid lobster clasp</strong> · Steel jewelry wire instead of fraying elastic</span>
+        </div>
+      </div>
+
+      <div class="visual-card">
+        <figure onclick="openGalleryAt(8)">
+          <img src="./media/unslop_in_palm_gift_daylight.jpg" alt="Hands holding open linen-lined cream drawer gift box with bracelet inside" loading="lazy" width="600" height="630">
+        </figure>
+        <div class="visual-cap">
+          <span><strong>Ready to gift</strong> · Ships unlinked so they enter their own birth date</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BAND 4: COMPACT LIVE SAFARI PREVIEW + COLLAPSIBLE DETAILS -->
+  <section id="reading" class="band">
+    <div class="sheet-and-specs">
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:14px;">
+          <h2 class="band-title" style="font-size:26px;">Live phone screen preview</h2>
+          <div style="display:flex;gap:8px;align-items:center;">
+            <input id="bdayInput" type="date" value="1996-11-14" onchange="updateReading()" style="height:36px;padding:0 10px;border-radius:8px;border:1px solid var(--line-strong);background:var(--card);color:var(--text);font-size:13px;">
+            <button class="btn-secondary" style="height:36px;" onclick="updateReading()">Test date</button>
+          </div>
         </div>
 
-        <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-top:12px;font-size:12px;color:var(--sage);">
-          <span>✓ $0/mo Forever</span>
-          <span>✓ 30-Day Easy Returns</span>
-          <span>✓ PayPal &amp; Encrypted Card</span>
+        <div class="browser-frame">
+          <div class="browser-bar">
+            <span>veloraritual.com/c/0473</span>
+            <span id="sheetDateLabel">Today</span>
+          </div>
+          <div class="browser-sheet">
+            <div class="coord-row">
+              <span>Sun <span id="sunCoord" class="coord-accent">22° 24′ Scorpio</span></span>
+              <span>Moon <span id="moonCoord" class="coord-accent">05° 25′ Capricorn</span></span>
+              <span id="elementNote">Earth dominant</span>
+            </div>
+            <h3 style="font-family:var(--serif);font-size:23px;font-weight:400;margin:16px 0 8px;" id="sheetTitle">Step back from tomorrow's unfinished list</h3>
+            <p style="font-size:14px;line-height:22px;color:var(--text-2);" id="sheetBody">Born under a Scorpio Sun and Capricorn Moon. Pick the single task that matters before noon tomorrow and leave the rest out of the bedroom.</p>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="band-title" style="font-size:26px;margin-bottom:14px;">Specifications &amp; care</h2>
+        <div class="accordion">
+          <details open>
+            <summary><span>Materials &amp; dimensions</span><span>+</span></summary>
+            <p>6mm faceted natural Uruguayan amethyst (Mohs 7.0, natural color zoning) paired with 316L surgical steel coated in 2.5μm vacuum 18k gold PVD. Length: 16.5 cm + 3.0 cm extender. Weight: 6.4 g.</p>
+          </details>
+          <details>
+            <summary><span>How the passive disc works</span><span>+</span></summary>
+            <p>A 0.2mm ferrite shield and NTAG213 wafer sit sealed inside the 14mm gold star coin. Hold it near the top of any iPhone (XR or newer) or NFC-enabled Android phone to open your reading in Safari or Chrome. Zero battery, zero charging, $0/month forever.</p>
+          </details>
+          <details>
+            <summary><span>Shipping &amp; 30-day returns</span><span>+</span></summary>
+            <p>Individually inspected and packed within 5 to 7 business days, followed by free tracked duties-paid delivery. Unworn pieces in their original drawer box may be returned within 30 days for a full refund.</p>
+          </details>
         </div>
       </div>
     </div>
@@ -493,209 +657,188 @@
 
 </main>
 
-<footer style="border-top:1px solid rgba(223,191,132,0.14);background:#06040A;padding:54px 0 42px;font-size:13px;color:var(--ivory-soft);">
-  <div class="container">
-    <div style="display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:32px;margin-bottom:36px;">
-      <div>
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
-          <img src="./media/vela_emblem.jpg" alt="VELORA" style="width:30px;height:30px;border-radius:50%;border:1px solid var(--gold);">
-          <span style="font-family:var(--display);font-size:18px;letter-spacing:0.22em;color:var(--ivory);">VELORA</span>
-        </div>
-        <p style="color:var(--muted);line-height:1.65;max-width:320px;">
-          Earth-mined natural gemstones paired with a battery-free 18K gold medallion—unlocking private birth-chart &amp; tarot reflections for $0/month forever.
-        </p>
-        <div style="margin-top:12px;color:var(--gold-light);font-size:12.5px;">Concierge: support@veloraritual.com</div>
-      </div>
-      <div>
-        <div style="font-family:var(--mono);font-size:11px;letter-spacing:0.15em;color:var(--gold);margin-bottom:12px;">SIGNATURE PIECES</div>
-        <div style="display:flex;flex-direction:column;gap:8px;">
-          <a href="./index.html">Twilight Amethyst (#1 Flagship)</a>
-          <a href="./blush-moonstone-rose-quartz-bracelet.html">Blush Moonstone &amp; Pearl</a>
-          <a href="./orbit-calm-spinner-labradorite-bracelet.html">Orbit 360° Spinner Labradorite</a>
-          <a href="./twin-orbit-connected-duo-set.html">Twin Orbit Sun &amp; Moon Duo</a>
-        </div>
-      </div>
-      <div>
-        <div style="font-family:var(--mono);font-size:11px;letter-spacing:0.15em;color:var(--gold);margin-bottom:12px;">EXPERIENCE</div>
-        <div style="display:flex;flex-direction:column;gap:8px;">
-          <a href="javascript:void(0)" onclick="openQuiz()">60-Second Birth-Chart Match</a>
-          <a href="./quiz/c/index.html?id=VL-0001">NFC Medallion Tap Portal</a>
-          <a href="#craft">18K Vacuum Gold &amp; Gemstones</a>
-        </div>
-      </div>
-      <div>
-        <div style="font-family:var(--mono);font-size:11px;letter-spacing:0.15em;color:var(--gold);margin-bottom:12px;">POLICIES &amp; CARE</div>
-        <div style="display:flex;flex-direction:column;gap:8px;">
-          <a href="./policies.html#shipping">Shipping &amp; 5–7 Day Preparation</a>
-          <a href="./policies.html#returns">30-Day Return &amp; Refund Policy</a>
-          <a href="./policies.html#privacy">Privacy &amp; Data Protection</a>
-          <a href="./policies.html#terms">Terms &amp; Mindfulness Disclaimer</a>
-        </div>
-      </div>
+<footer class="site-footer">
+  <div class="wrap footer-row">
+    <div>
+      <span class="wordmark" style="margin-right:16px;">Velora</span>
+      <span>© 2026 Velora Jewelry · support@veloraritual.com</span>
     </div>
-    <div style="padding-top:22px;border-top:1px solid rgba(255,255,255,0.07);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:12px;color:var(--muted);">
-      <span>© 2026 VELORA Fine Spiritual Jewelry. All rights reserved.</span>
-      <span>Secure Checkout Ready · PayPal · Visa · Mastercard · Apple Pay</span>
+    <div class="footer-links">
+      <a href="javascript:void(0)" onclick="openQuiz()">Chart matcher</a>
+      <a href="./policies.html#shipping">Shipping (5–7 days)</a>
+      <a href="./policies.html#returns">30-day returns</a>
+      <a href="./policies.html#privacy">Privacy</a>
+      <a href="./policies.html#terms">Terms</a>
     </div>
   </div>
 </footer>
 
-<!-- FULL-RES HD PHOTO LIGHTBOX -->
-<div class="modal-mask" id="lightboxModal" onclick="closeLightbox()">
-  <div style="max-width:1080px;width:100%;text-align:center;position:relative;" onclick="event.stopPropagation()">
-    <button onclick="closeLightbox()" style="position:absolute;top:-16px;right:-10px;width:38px;height:38px;border-radius:50%;border:1px solid var(--gold);background:#120D20;color:var(--gold);font-size:20px;z-index:5;">×</button>
-    <img id="lightboxImg" src="" alt="" style="max-width:100%;max-height:82dvh;border-radius:18px;border:1px solid var(--border-gold);box-shadow:0 30px 90px rgba(0,0,0,0.9);">
-    <div id="lightboxCap" style="margin-top:12px;font-family:var(--serif);font-style:italic;font-size:18px;color:var(--gold-light);"></div>
-  </div>
-</div>
-
-<!-- QUIZ MODAL -->
-<div class="modal-mask" id="quizModal" onclick="if(event.target===this)closeQuiz()">
-  <div style="width:100%;max-width:460px;height:min(90dvh,780px);border-radius:28px;overflow:hidden;border:1.5px solid var(--gold);position:relative;background:#080510;">
-    <button onclick="closeQuiz()" style="position:absolute;top:12px;right:12px;z-index:10;width:34px;height:34px;border-radius:50%;border:1px solid var(--gold);background:#140E24;color:var(--gold);font-size:18px;">×</button>
-    <iframe id="quizIframe" src="" style="width:100%;height:100%;border:none;"></iframe>
-  </div>
-</div>
-
-<!-- CART DRAWER -->
-<div class="drawer-mask" id="cartMask" onclick="if(event.target===this)toggleCart(false)">
-  <div class="cart-panel">
-    <div style="padding:20px;border-bottom:1px solid var(--border-gold);display:flex;justify-content:space-between;align-items:center;">
-      <span style="font-family:var(--display);font-size:19px;color:var(--gold-light);">Your Bag</span>
-      <button onclick="toggleCart(false)" style="background:none;border:none;color:var(--gold);font-size:24px;">×</button>
+<!-- Full-Screen 9-Photo Gallery Lightbox -->
+<div class="backdrop" id="lightbox" onclick="closeLightbox()">
+  <div style="max-width:1040px;width:100%;" onclick="event.stopPropagation()">
+    <img id="lightboxImg" src="" alt="" style="width:100%;max-height:80vh;object-fit:contain;border-radius:12px;background:var(--card);">
+    <div style="margin-top:12px;display:flex;justify-content:space-between;align-items:center;gap:12px;color:var(--card);font-size:13px;">
+      <span id="lightboxCap"></span>
+      <div style="display:flex;gap:8px;">
+        <button class="btn-secondary" style="height:34px;" onclick="stepGallery(-1)">← Prev</button>
+        <button class="btn-secondary" style="height:34px;" onclick="stepGallery(1)">Next →</button>
+        <button class="btn-secondary" style="height:34px;" onclick="closeLightbox()">Close</button>
+      </div>
     </div>
-    <div id="cartItems" style="flex:1;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:12px;"></div>
-    <div id="cartFooter" style="padding:18px;border-top:1px solid var(--border-gold);background:#090612;"></div>
   </div>
 </div>
 
+<!-- Quiz Modal -->
+<div class="backdrop" id="quizModal" onclick="if(event.target===this)closeQuiz()">
+  <div style="width:100%;max-width:440px;height:min(88vh,740px);border-radius:16px;overflow:hidden;background:var(--card);border:1px solid var(--line-strong);position:relative;">
+    <button onclick="closeQuiz()" style="position:absolute;top:12px;right:12px;z-index:10;width:32px;height:32px;border-radius:8px;border:1px solid var(--line-strong);background:var(--card);color:var(--text);font-size:16px;">×</button>
+    <iframe id="quizFrame" src="" style="width:100%;height:100%;border:none;"></iframe>
+  </div>
+</div>
+
+<!-- Bag Drawer -->
+<div class="drawer-backdrop" id="bagDrawer" onclick="if(event.target===this)toggleBag(false)">
+  <div class="drawer">
+    <div style="height:56px;padding:0 24px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;">
+      <span style="font-weight:500;">Your bag</span>
+      <button class="text-link" onclick="toggleBag(false)">Close</button>
+    </div>
+    <div id="bagList" style="flex:1;overflow-y:auto;padding:24px;display:flex;flex-direction:column;gap:12px;"></div>
+    <div id="bagFoot" style="padding:24px;border-top:1px solid var(--line);background:var(--bg);"></div>
+  </div>
+</div>
+
+<script src="./quiz/astro-engine.js"></script>
 <script>
-const GALLERY = [{"src": "./media/hero_sku01_wrist_stack.jpg", "label": "On-Wrist Stack · 18K Gold Paperclip Chain & Natural Amethyst"}, {"src": "./media/sku01_amethyst_halfchain.jpg", "label": "Full Silhouette · Half-Chain & 6mm Faceted Uruguayan Amethyst"}, {"src": "./media/hero_sku01_macro_seal.jpg", "label": "Studio Macro · Brushed 18K Sunburst Engraving & Crystal Inclusions"}, {"src": "./media/hero_sku01_natural_tap_editorial.jpg", "label": "Evening Ritual · Gentle Touch to Open Your Private Reading"}];
-const BASE_PRICE = 68;
-const DUO_PRICE = 102;
-const SINGLE_ONLY = false;
-const PROD_TITLE = "Twilight Amethyst & 18K Gold Half-Chain Talisman";
-let curHeroIdx = 0;
-let isDuo = !SINGLE_ONLY;
+const GALLERY_ITEMS = [
+  { src: "./media/unslop_wrist_daylight.jpg", cap: "1 / 9 · Worn on bare wrist in overcast morning light" },
+  { src: "./media/unslop_hero_collarbone_sweater.jpg", cap: "2 / 9 · Styled with oatmeal cashmere knitwear" },
+  { src: "./media/sku01_amethyst_halfchain.jpg", cap: "3 / 9 · Half 18k gold paperclip chain and 6mm faceted amethyst" },
+  { src: "./media/unslop_gem_light_macro.jpg", cap: "4 / 9 · Natural Uruguayan amethyst translucency and brushed star disc" },
+  { src: "./media/unslop_watch_stack_daylight.jpg", cap: "5 / 9 · Stacked flat beside a leather-strap watch" },
+  { src: "./media/unslop_bedside_tap_daylight.jpg", cap: "6 / 9 · Bedside touch to open private reading" },
+  { src: "./media/unslop_handwash_sink_daylight.jpg", cap: "7 / 9 · Waterproof 2.5μm 18k gold vermeil under running water" },
+  { src: "./media/unslop_clasp_macro_daylight.jpg", cap: "8 / 9 · Solid lobster clasp, steel wire, and raw linen pouch" },
+  { src: "./media/unslop_in_palm_gift_daylight.jpg", cap: "9 / 9 · Ships unlinked in linen-lined drawer box" }
+];
+
+let galIdx = 0;
+let pairSelected = true;
 let bag = [];
 
-function renderThumbs(activeIdx) {
-  const box = document.getElementById("heroThumbs");
-  if (!box) return;
-  box.innerHTML = GALLERY.map((g, idx) => `
-    <div class="thumb-btn ${idx===activeIdx?'active':''}" onclick="setHeroMedia(${idx})">
-      <img src="${g.src}" alt="">
-    </div>
-  `).join("");
+function openGalleryAt(idx) {
+  galIdx = (idx + GALLERY_ITEMS.length) % GALLERY_ITEMS.length;
+  document.getElementById("lightboxImg").src = GALLERY_ITEMS[galIdx].src;
+  document.getElementById("lightboxCap").textContent = GALLERY_ITEMS[galIdx].cap;
+  document.getElementById("lightbox").classList.add("open");
 }
-
-function setHeroMedia(idx) {
-  curHeroIdx = idx;
-  const item = GALLERY[idx] || GALLERY[0];
-  document.getElementById("heroMainImg").src = item.src;
-  document.getElementById("heroMediaCaption").textContent = item.label;
-  renderThumbs(idx);
+function stepGallery(delta) {
+  openGalleryAt(galIdx + delta);
 }
-
-function openHeroLightbox() {
-  const item = GALLERY[curHeroIdx] || GALLERY[0];
-  openLightbox(item.src, item.label);
-}
-
-function openLightbox(src, cap) {
-  document.getElementById("lightboxImg").src = src;
-  document.getElementById("lightboxCap").textContent = cap || "";
-  document.getElementById("lightboxModal").classList.add("open");
-}
-
 function closeLightbox() {
-  document.getElementById("lightboxModal").classList.remove("open");
+  document.getElementById("lightbox").classList.remove("open");
 }
 
-function selectTier(duo) {
-  if (SINGLE_ONLY) return;
-  isDuo = duo;
-  document.getElementById("tier1").classList.toggle("selected", !duo);
-  document.getElementById("tier2").classList.toggle("selected", duo);
-  document.getElementById("mainBuyBtn").textContent = `Add to Bag — $${duo ? DUO_PRICE : BASE_PRICE}.00 ✦`;
+function selectOption(isPair) {
+  pairSelected = isPair;
+  document.getElementById("optSingle").classList.toggle("selected", !isPair);
+  document.getElementById("optPair").classList.toggle("selected", isPair);
+  document.getElementById("addBtn").textContent = "Add to bag · $" + (isPair ? 102 : 68);
+  document.getElementById("railTopPrice").textContent = "$" + (isPair ? 102 : 68);
 }
 
-function flipTarot() {
-  try {
-    const ctx = new (window.AudioContext || window.webkitAudioContext)();
-    [432, 648].forEach((f, i) => {
-      const o = ctx.createOscillator(), g = ctx.createGain();
-      o.frequency.value = f;
-      g.gain.setValueAtTime(0.001, ctx.currentTime);
-      g.gain.exponentialRampToValueAtTime(i ? 0.03 : 0.07, ctx.currentTime + 0.06);
-      g.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 2.2);
-      o.connect(g); g.connect(ctx.destination);
-      o.start(); o.stop(ctx.currentTime + 2.3);
-    });
-  } catch (_) {}
-  document.getElementById("tarotInner").classList.toggle("flipped");
+const NOTES_BY_ELEMENT = {
+  Water: {
+    title: "Let tonight's replay stop before midnight",
+    body: "Water placements hold onto tone long after a conversation ends. Write down one line if needed tomorrow, then set the phone face down."
+  },
+  Earth: {
+    title: "Step back from tomorrow's unfinished list",
+    body: "Pick the single task that matters before noon tomorrow and leave the rest out of the bedroom."
+  },
+  Air: {
+    title: "Close the extra open tabs in your head",
+    body: "Come back to physical sensation: cool stone against your wrist and six slow exhales."
+  },
+  Fire: {
+    title: "Bank your energy for morning light",
+    body: "Save tonight's second wind of ideas for tomorrow morning when you can act on it cleanly."
+  }
+};
+
+function degFmt(lon) {
+  const inSign = ((lon % 30) + 30) % 30;
+  const deg = Math.floor(inSign);
+  const min = Math.floor((inSign - deg) * 60);
+  return String(deg).padStart(2, "0") + "° " + String(min).padStart(2, "0") + "′";
+}
+
+function updateReading() {
+  const val = document.getElementById("bdayInput").value || "1996-11-14";
+  if (!window.VelaAstro) return;
+  const chart = window.VelaAstro.computeChart(val, "");
+  document.getElementById("sunCoord").textContent = degFmt(chart.sunLon || 232.4) + " " + chart.sun;
+  document.getElementById("moonCoord").textContent = degFmt(chart.moonLon || 275.4) + " " + chart.moon;
+  document.getElementById("elementNote").textContent = chart.dominantElement + " dominant";
+  const note = NOTES_BY_ELEMENT[chart.dominantElement] || NOTES_BY_ELEMENT.Earth;
+  document.getElementById("sheetTitle").textContent = note.title;
+  document.getElementById("sheetBody").textContent = "Born under a " + chart.sun + " Sun and " + chart.moon + " Moon. " + note.body;
 }
 
 function addToBag() {
-  const pr = (!SINGLE_ONLY && isDuo) ? DUO_PRICE : BASE_PRICE;
-  const lbl = (!SINGLE_ONLY && isDuo) ? `${PROD_TITLE} (Sacred Twin Pairing)` : PROD_TITLE;
-  bag.push({ title: lbl, price: pr, img: GALLERY[0].src });
+  bag.push({
+    name: pairSelected ? "Twilight Amethyst Bracelet (Pair of 2)" : "Twilight Amethyst Bracelet",
+    price: pairSelected ? 102 : 68,
+    img: GALLERY_ITEMS[0].src
+  });
   renderBag();
-  toggleCart(true);
+  toggleBag(true);
 }
 
 function renderBag() {
-  document.getElementById("bagCnt").textContent = bag.length;
-  const box = document.getElementById("cartItems");
-  const foot = document.getElementById("cartFooter");
+  document.getElementById("bagCount").textContent = bag.length;
+  const list = document.getElementById("bagList");
+  const foot = document.getElementById("bagFoot");
   if (!bag.length) {
-    box.innerHTML = `<div style="text-align:center;padding:48px 14px;color:var(--muted);">Your bag is empty.</div>`;
+    list.innerHTML = `<p style="color:var(--muted);font-size:14px;">Your bag is empty</p>`;
     foot.innerHTML = "";
     return;
   }
   const total = bag.reduce((s, x) => s + x.price, 0);
-  box.innerHTML = bag.map((it, i) => `
-    <div style="display:flex;gap:12px;align-items:center;padding:12px;border-radius:14px;background:rgba(255,255,255,0.04);border:1px solid var(--border-gold);">
-      <img src="${it.img}" style="width:60px;height:60px;border-radius:10px;object-fit:cover;">
+  list.innerHTML = bag.map((item, idx) => `
+    <div style="display:flex;gap:12px;align-items:center;padding:12px;border-radius:8px;background:var(--bg);border:1px solid var(--line);">
+      <img src="${item.img}" alt="" style="width:56px;height:56px;border-radius:6px;object-fit:cover;">
       <div style="flex:1;">
-        <div style="font-size:13.5px;font-weight:600;">${it.title}</div>
-        <div style="font-size:12.5px;color:var(--gold);margin-top:3px;">$${it.price}.00 · Velvet Gift Box Included</div>
+        <div style="font-size:14px;font-weight:500;">${item.name}</div>
+        <div style="font-family:var(--mono);font-size:13px;color:var(--text-2);margin-top:2px;">$${item.price}</div>
       </div>
-      <button onclick="bag.splice(${i},1);renderBag()" style="background:none;border:none;color:var(--muted);font-size:18px;">×</button>
+      <button class="text-link" onclick="bag.splice(${idx},1);renderBag()">Remove</button>
     </div>
   `).join("");
   foot.innerHTML = `
-    <div style="display:flex;justify-content:space-between;font-family:var(--display);font-size:18px;margin-bottom:12px;">
-      <span>Subtotal</span><span class="gold-text">$${total}.00 USD</span>
+    <div style="display:flex;justify-content:space-between;margin-bottom:16px;font-size:15px;font-weight:500;">
+      <span>Subtotal</span>
+      <span style="font-family:var(--mono);">$${total}</span>
     </div>
-    <button class="btn-gold" style="width:100%;" onclick="alert('Proceeding to Checkout ($' + ${total} + '.00 USD)')">Proceed to Checkout — $${total}.00 ✦</button>
+    <button class="btn-primary" style="width:100%;" onclick="alert('Checkout ready · $' + ${total} + ' USD')">Continue to checkout · $${total}</button>
   `;
 }
 
-function toggleCart(open) { document.getElementById("cartMask").classList.toggle("open", open); }
+function toggleBag(open) {
+  document.getElementById("bagDrawer").classList.toggle("open", open);
+}
 function openQuiz() {
-  const f = document.getElementById("quizIframe");
+  const f = document.getElementById("quizFrame");
   if (!f.src || f.src === location.href) f.src = "./quiz/index.html?mode=flagship";
   document.getElementById("quizModal").classList.add("open");
 }
-function closeQuiz() { document.getElementById("quizModal").classList.remove("open"); }
-
-function escHtml(s) {
-  return String(s || "").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+function closeQuiz() {
+  document.getElementById("quizModal").classList.remove("open");
 }
-renderThumbs(0);
+
+document.getElementById("sheetDateLabel").textContent = new Date().toLocaleDateString("en-US", { month: "short", day: "numeric" });
 renderBag();
-(function checkQuizParams() {
-  const sp = new URLSearchParams(location.search);
-  if (sp.get("sign")) {
-    const b = document.getElementById("quizMatchBar");
-    const nm = sp.get("name") ? escHtml(sp.get("name")) + "'s " : "Your ";
-    const sn = escHtml(sp.get("sign"));
-    const mn = sp.get("moon") ? " / ☽ " + escHtml(sp.get("moon")) : "";
-    b.innerHTML = `<span>✦ <b>Matched for ${nm}☉ ${sn}${mn} Natal Chart</b></span><span>97% Resonance</span>`;
-    b.style.display = "flex";
-  }
-})();
+updateReading();
 </script>
 </body>
 </html>
